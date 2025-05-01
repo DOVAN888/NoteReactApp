@@ -1,0 +1,97 @@
+.login-background{
+background: linear-gradient(135deg, rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .login-container {
+        background-color: white;
+        width: 400px;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .login-content {
+        .text-login {
+            text-align: center;
+            font-weight: 600;
+            font-size: 16px;
+        }
+       .login-input{
+        margin: 7px;
+        width: 100%; // input vẫn chiếm full chiều rộng
+    //  padding-right: 40px; // chừa khoảng trống bên phải để icon không đè lên chữ
+        .custom-input-password {
+               position: relative;
+               width: 100%;
+            }
+         i{
+            position: absolute;
+                top: 50%;
+                right: 10px; // cách mép phải 10px
+                transform: translateY(-50%); // căn giữa icon theo chiều dọc
+                cursor: pointer; // trỏ chuột thành bàn tay khi hover
+                color: #333; // màu xám đẹp
+         }
+
+       }
+       .btn-login{
+        width: 100%;
+            margin: 10px 0;
+            height: 30px;
+            border-radius: 15px;
+            outline: none;
+            border: none;
+            background: linear-gradient(135deg, #22c1c3 0%, #fdbb2d 100%);
+        }
+
+        .forgot-password{
+            font-size: 12px;
+           
+        }
+        .text-other-login{
+            margin-top: 8px;
+        }
+        .social-login{
+            display: flex;
+            justify-content: center;
+            padding: 8px;
+            gap: 10px;
+          
+            .google{
+                font-size: 30px;
+                background: #c32424;
+                border-radius:50% ;
+                height: 50px;
+                width: 50px;
+                display: flex;
+                align-items: center;
+            justify-content: center;
+            color: white;
+           
+
+
+            }
+            .facebook{
+                font-size: 30px;
+                    background: #307aaf;
+                    border-radius: 50%;
+                    height: 50px;
+                    width: 50px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: white;
+
+            }
+        }
+    }
+}
+
+// position: absolute làm cho phần tử .login-container được định vị tương đối với phần tử cha gần nhất có position: relative (nếu không có thì là body). top: 0;
+// left: 0;
+// right: 0;
+// bottom: 0;
+// ép phần tử "dán vào" 4 cạnh của phần tử cha. margin: auto sẽ canh giữa phần tử trong vùng giới hạn đó (căn giữa cả theo chiều ngang lẫn chiều dọc).
