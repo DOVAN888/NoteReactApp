@@ -11,3 +11,7 @@ export default {
         ROUTER_BASE_NAME: null,
     }
 };
+
+
+
+//File config.js trong dự án React hoặc JavaScript thường được dùng để cấu hình các giá trị dùng chung, chẳng hạn như:

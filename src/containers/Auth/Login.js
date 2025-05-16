@@ -4,7 +4,8 @@ import { push } from "connected-react-router";
 
 import * as actions from "../../store/actions";
 import './Login.scss';
-import { userService } from '../../services';
+//import { userService } from '../../services';
+import userService from '../../services/userService';
 import { FormattedMessage } from 'react-intl';
 
 class Login extends Component {
@@ -13,7 +14,8 @@ class Login extends Component {
         this.state = {
             username: '',
             password: '',
-            isShowPassword :false,
+            isShowPassword: false,
+            errMessage:''
         }
     }
 /// ham onchan name ,password
@@ -30,9 +32,36 @@ class Login extends Component {
     }
 
     // ham onclick 
-    handleLogin = async () => {
-        await userService.handleLogin(this.state.username, this.state.password);
+handleLogin = async () => {
+    this.setState({ errMessage: '' });
+
+    try {
+        let response = await userService.handleLogin(this.state.username, this.state.password);
+        const data = response?.data || response; // nếu bạn đã dùng axios interceptor thì bỏ .data
+
+        if (data && data.errCode !== 0) {
+            this.setState({
+                errMessage: data.message || 'Something went wrong!'
+            });
+        }
+
+        if (data && data.errCode === 0) {
+            this.props.userLoginSuccess(data.user)// luu user vao cua hang redux 
+            console.log('🎉 Login thành công!');
+             this.props.navigate('/system/user-manage'); 
+            // ví dụ: this.props.adminLoginSuccess(data.user);
+        }
+
+    } catch (error) {
+        if (error.response?.data?.message) {
+            this.setState({ errMessage: error.response.data.message });
+        } else {
+            this.setState({ errMessage: 'Something went wrong!' });
+        }
     }
+};
+
+
     // hien paswword bang con mat 
 
     handleShowHidePassword=()=>{
@@ -77,7 +106,11 @@ class Login extends Component {
                                  
                                 </div>
                             </div>
-
+                           {this.state.errMessage && (
+                            <div className='col-12' style={{ color: 'red' }}>
+                                {this.state.errMessage}
+                            </div>
+                        )}
                             <button className='btn-login'onClick={()=>this.handleLogin()}>Login</button>
                             <div className='col-12'>
                                 <span className='forgot-password'>Forgot your password?</span>
@@ -106,9 +139,29 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         navigate: (path) => dispatch(push(path)),
-        adminLoginSuccess: (adminInfo) => dispatch(actions.adminLoginSuccess(adminInfo)),
-        adminLoginFail: () => dispatch(actions.adminLoginFail()),
+        userLoginFail: () => dispatch(actions.userLoginFail()),
+        userLoginSuccess: (userInfor) => dispatch(actions.userLoginSuccess(userInfor))
+        
     };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
+
+
+
+
+
+
+
+// Login.js (gọi dispatch)
+//     ↓
+// actions/userActions.js (tạo action object)
+//     ↓
+// reducers/appReducer.js (cập nhật state)
+//     ↓
+// rootReducer.js (kết hợp reducer)
+//     ↓
+// store/index.js (tạo store + persist)
+//     ↓
+// Provider → App nhận state mới
+
