@@ -1,0 +1,25 @@
+.section-about {
+    padding: 40px 80px; // (1) Thêm khoảng đệm trên dưới 40px, trái phải 80px cho toàn bộ section
+
+    .about-content {
+        display: flex; // (2) Sử dụng flexbox để sắp xếp các phần tử con theo hàng ngang
+        gap: 30px; // (3) Tạo khoảng cách 30px giữa các phần tử con (video và text)
+        flex-wrap: wrap; // (4) Cho phép các phần tử tự động xuống dòng khi không đủ chiều ngang
+
+        .video-container {
+            flex: 1; // (5) Cho phép phần video chiếm đều không gian còn lại với phần text
+            min-width: 320px; // (6) Đảm bảo chiều rộng tối thiểu là 320px để tránh quá nhỏ
+        }
+
+        .text-description {
+            flex: 1; // (7) Tương tự như video-container, chia đều không gian
+            min-width: 420px; // Đảm bảo text không quá hẹp
+            font-size: 16px; // Cỡ chữ 16px dễ đọc
+            line-height: 1.6; // Giãn dòng hợp lý giúp dễ nhìn
+            color: #333; // Màu chữ đậm hơn xám nhẹ giúp dễ đọc
+        }
+    }
+}
+
+// ✅ Giải thích chi tiết 3 phần của flex: 1 Thành phần Ý nghĩa flex-grow: 1 Cho phép phần tử tăng kích thước nếu còn không gian trống. flex-shrink: 1 Cho phép phần tử thu nhỏ lại nếu không đủ không gian. flex-basis: 0% Bắt đầu với chiều rộng ban đầu là 0,
+// sau đó chia không gian còn lạ

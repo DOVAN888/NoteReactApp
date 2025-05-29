@@ -8,6 +8,75 @@
     color: $common-text-color;
     height: 40px;
     position: relative;
+
+    .right-content {
+            width: 25%;
+            //  border: 1px solid grey;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            // margin-left: 900px;
+    
+            .support {
+                display: flex;
+                align-items: center;
+                font-size: 14px;
+                cursor: pointer;
+    
+                i {
+                    margin-right: 5px; // Khoảng cách giữa icon và chữ
+                    font-size: 15px;
+                }
+            }
+    
+            .lang-dropdown {
+                position: relative;
+    
+                .lang-toggle {
+                    cursor: pointer;
+                    // border: 1px solid #ccc;
+                    padding: 4px 8px;
+                    border-radius: 4px;
+                    background-color: #f0f0f0;
+                    display: flex;
+                    align-items: center;
+    
+                    img {
+                        width: 24px;
+                        height: 16px;
+                    }
+                }
+    
+                .lang-menu {
+                    position: absolute;
+                    top: 110%; // Đặt menu ngay dưới phần tử toggle, dịch xuống 110% chiều cao của phần tử cha
+                    right: 0; // Canh lề phải sát mép phần tử cha
+                    background: #333;
+                    color: white;
+                    border-radius: 6px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+                    z-index: 100; //// Đảm bảo nằm trên các phần tử khác (nếu bị đè)
+                    min-width: 150px;
+    
+                    .lang-item {
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                        padding: 8px 12px;
+                        cursor: pointer;
+    
+                        img {
+                            width: 20px;
+                            height: 14px;
+                        }
+    
+                        &:hover {
+                            background-color: #444;
+                        }
+                    }
+                }
+            }
+        }
     .btn-logout {
         color: $common-text-color;
         line-height: 40px;
@@ -19,5 +88,7 @@
         i {
             font-size: $base-size + 1px;
         }
+        
     }
 }
+   

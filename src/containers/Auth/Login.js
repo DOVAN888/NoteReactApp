@@ -38,6 +38,7 @@ handleLogin = async () => {
     try {
         let response = await userService.handleLogin(this.state.username, this.state.password);
         const data = response?.data || response; // nếu bạn đã dùng axios interceptor thì bỏ .data
+        console.log("check datat".data)
 
         if (data && data.errCode !== 0) {
             this.setState({
@@ -47,14 +48,14 @@ handleLogin = async () => {
 
         if (data && data.errCode === 0) {
             this.props.userLoginSuccess(data.user)// luu user vao cua hang redux 
-            console.log('🎉 Login thành công!');
-             this.props.navigate('/system/user-manage'); 
+            this.props.navigate('/system/user-manage'); 
             // ví dụ: this.props.adminLoginSuccess(data.user);
         }
 
     } catch (error) {
         if (error.response?.data?.message) {
             this.setState({ errMessage: error.response.data.message });
+            
         } else {
             this.setState({ errMessage: 'Something went wrong!' });
         }

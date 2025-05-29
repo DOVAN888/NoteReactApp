@@ -1,0 +1,29 @@
+.section-specialty {
+                          // Bọc ngoài toàn bộ slider chuyên mục
+    padding: 40px 80px;                 // Khoảng cách trên/dưới
+   // border: 1px solid red; // Viền đỏ để kiểm tra layout
+   // height: 100px;                    // Chiều cao tạm thời
+
+    .specialty-content {
+                        // Phần nội dung chứa slider
+        width: 100%; // Chiếm toàn bộ chiều ngang
+        margin: 0 auto; // Căn giữa
+        position: relative; // Cho mũi tên định vị tương đối
+     
+
+        .slick-slider {
+            position: relative; // Định vị mũi tên đúng chỗ
+        }
+
+        .slide-img {
+            // Ảnh trong mỗi slide
+            width: 100%;            // Chiếm toàn bộ khung ảnh
+            height: auto;                // Chiều cao tự động
+            border-radius: 6px;             // Bo góc nhẹ
+            object-fit: cover;           // Hiển thị ảnh không méo, cắt đều
+            padding: 0 2px;
+        }
+
+       
+    }
+}

@@ -1,0 +1,45 @@
+.section-handbook{
+padding: 40px 120px;
+
+
+.handbook-content {
+    
+
+    // ⚠️ BẮT BUỘC: chỉnh slick-slide để nó không gây lỗi
+    .slick-slide>div {
+        display: flex;
+        justify-content: center;
+        height: 100%; // Giữ chiều cao đầy đủ
+    }
+
+    .handbook-item {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        background: white;
+        padding: 16px;
+        border-radius: 6px;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+        width: 100%;
+    }
+
+    .left-img {
+        flex-shrink: 0;
+
+        img {
+            width: 310px;
+            height: 170px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+    }
+
+    .right-text {
+        font-size: 14px;
+        font-weight: 500;
+        color: #333;
+        line-height: 1.4;
+         
+    }
+}
+}

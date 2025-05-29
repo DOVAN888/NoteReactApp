@@ -24,7 +24,7 @@ const persistCommonConfig = {
 const userPersistConfig = {
     ...persistCommonConfig,
     key: 'user',
-    whitelist: ['isLoggedIn', 'userInfo']
+    whitelist: ['isLoggedIn', 'userInfo','language']
 };
 
 // 📦 Trả về một rootReducer đã kết hợp tất cả reducer

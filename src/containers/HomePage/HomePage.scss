@@ -1,0 +1,57 @@
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 20px 0; // padding-top 30px, padding-x 20px
+    margin-bottom: 30px;
+
+    .title-section {
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .btn-section {
+        border: none;
+        background: #ebebeb;
+        padding: 6px 12px;
+        font-size: 12px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+        text-transform: uppercase;
+
+        &:hover {
+            background-color: #f7d800;
+        }
+    }
+}
+
+ .custom-arrow {
+     // Mũi tên tùy chỉnh
+     z-index: 10; // Luôn nằm trên ảnh
+     width: 30px; // Kích thước mũi tên
+     height: 30px; // Kích thước mũi tên
+     background-color: rgba(0, 0, 0, 0.5); // Màu nền mờ
+     border-radius: 50%; // Bo tròn mũi tên
+     display: flex; // Dùng flex để căn giữa
+     align-items: center; // Căn giữa theo chiều dọc
+     justify-content: center; // Căn giữa theo chiều ngang
+    opacity: 1 !important; // ✅ Luôn hiện
+        visibility: visible !important; // ✅ Tránh bị hidden
+
+     &::before {
+         font-size: 20px; // Kích thước icon
+         color:rgb(242, 87, 87); // Màu icon
+        
+     }
+ }
+
+ .next-arrow {
+     // Mũi tên bên phải
+     right: 20px; // Cách mép phải
+ }
+
+ .prev-arrow {
+     // Mũi tên bên trái
+     left: 20px; // Cách mép trái
+ }

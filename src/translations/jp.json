@@ -1,0 +1,58 @@
+{
+  "home-header": {
+    "speciality": "専門科",
+    "health-facility": "医療施設",
+    "doctor": "医師",
+    "checkup-package": "健康診断パッケージ",
+    "support": "サポート",
+      "search": {
+    "placeholder": "専門科を検索"
+  },
+    "subs": {
+      "speciality": "専門医を探す",
+      "health-facility": "病院やクリニックを選ぶ",
+      "doctor": "優秀な医師を選ぶ",
+      "checkup-package": "総合健康診断"
+    },
+    "option": {
+      "speciality": "専門科受診",
+      "remote": "遠隔診療",
+      "general": "一般診療",
+      "test": "健康診断・検査",
+      "mental": "メンタルヘルス",
+      "dental": "歯科検診"
+    }
+  },
+  "banner": {
+    "title1": "医療プラットフォーム",
+    "title2": "包括的なヘルスケアサービス"
+    
+    
+  },
+  "homepage": {
+  "specialty-title": "人気の診療科",
+  "more-button": "もっと見る",
+   "medical-facility-title": "注目の医療施設",
+    "search": "検索",
+   "outstanding-doctor-title": "今週の注目医師",
+     "handbook-title":"ハンドブック",
+     "All Articles":"すべての記事",
+     "video-title":"メディア "
+},
+"menu": {
+    "system": {
+        "header": "システム",
+        "system-administrator": {
+            "header": "システム管理",
+            "user-manage": "ユーザー管理",
+            "user-redux": "パッケージ管理 user redux",
+            "register-package-group-or-account": "グループ/アカウント用パッケージ登録"
+        },
+        "system-parameter": {
+            "header": "システムパラメータ"
+        }
+    }
+}
+
+
+}

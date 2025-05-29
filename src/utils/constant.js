@@ -6,9 +6,10 @@ export const path = {
     SYSTEM: '/system'
 };
 
-export const languages = {
+export const LANGUAGES = {
     VI: 'vi',
-    EN: 'en'
+    EN: 'en',
+    JP:'jp'
 };
  
 export const manageActions = {

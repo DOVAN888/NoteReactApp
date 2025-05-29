@@ -5,13 +5,11 @@ import { ConnectedRouter as Router } from 'connected-react-router'; // Router k�
 import { history } from '../redux'; // Đối tượng history dùng chung trong app
 import { ToastContainer } from 'react-toastify'; // Hiển thị popup toast message
 import '@fortawesome/fontawesome-free/css/all.min.css'; // Import icon font-awesome
-
+import CustomScrollbars from '../components/CustomScrollbars';
 import { userIsAuthenticated, userIsNotAuthenticated } from '../hoc/authentication'; // HOC kiểm tra trạng thái login
 import { path } from '../utils'; // Các đường dẫn định nghĩa sẵn
-
 import Home from '../routes/Home'; // Trang Home
 import Login from './Auth/Login'; // Component Login
-import Header from './Header/Header'; // Header của app
 import System from '../routes/System'; // Trang hệ thống quản trị
 
 import HomePage from './HomePage/HomePage';
@@ -44,16 +42,18 @@ class App extends Component {
                 <Router history={history}> {/* Router điều hướng dựa trên history từ Redux */}
                     <div className="main-container">
                         
-                        {this.props.isLoggedIn && <Header />} {/* Nếu đã đăng nhập thì hiển thị Header */}
+                        {/* {this.props.isLoggedIn && <Header />} Nếu đã đăng nhập thì hiển thị Header */}
 
-                        <span className="content-container">
+                        <div className="content-container">
+                            <CustomScrollbars style={{height:'100vh',width:'100%'}}>
                             <Switch> {/* Duyệt route và render component tương ứng */}
                                 <Route path={path.HOME} exact component={Home} /> {/* Trang Home */}
                                 <Route path={path.LOGIN} component={userIsNotAuthenticated(Login)} /> {/* Trang Login, chỉ vào nếu chưa login */}
                                 <Route path={path.SYSTEM} component={userIsAuthenticated(System)} /> {/* Trang System, chỉ vào nếu đã login */}
                                 <Route path={path.HOMEPAGE} component={HomePage} /> {/* Route mặc định fallback */}
-                            </Switch>
-                        </span>
+                                </Switch>
+                                </CustomScrollbars>
+                        </div>
 
                         <ToastContainer // Hiển thị toast thông báo (thành công, lỗi, v.v.)
                             className="toast-container"
