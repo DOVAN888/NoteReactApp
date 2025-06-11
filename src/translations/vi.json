@@ -5,8 +5,10 @@
     "doctor": "Bác sĩ",
     "checkup-package": "Gói khám",
     "support": "Hỗ trợ",
+     "welcome":"xin chào, ",
      "search": {
     "placeholder": "Tìm chuyên khoa khám bệnh"
+   
   },
     "subs": {
       "speciality": "Tìm bác sĩ chuyên khoa",
@@ -38,21 +40,40 @@
      "All Articles":"Tất cả bài viết",
       "video-title":"Truyền thông "
 
+
   },
    "menu": {
-        "system": {
-            "header": "Hệ thống",
-            "system-administrator": {
-                "header": "Quản trị hệ thống",
-                "user-manage": "Quản lý người sử dụng",
-                "user-redux": "Quản lý gói user redux",
-                "register-package-group-or-account": "Đăng ký gói dịch vụ cho nhóm/tài khoản"
-            },
-            "system-parameter": {
-                "header": "Tham số hệ thống"
-            }
-        }
-    }
+       "admin": {
+  "manage-user": "Người dùng",
+  "manage-doctor": "Quản lý bác sĩ",
+  "manage-admin": "Quản lý admin",
+  "crud": "CRUD người dùng",
+  "crud-redux": "CRUD người dùng Redux",
+  "clinic": "Phòng khám",
+  "manage-clinic": "Quản lý phòng khám",
+  "specialty": "Chuyên khoa",
+  "manage-specialty": "Quản lý chuyên khoa",
+  "handbook": "Cẩm nang",
+  "manage-handbook": "Quản lý cẩm nang"
+}
+
+    },
+"manage-user": {
+  "add": "Thêm mới người dùng",
+  "email": "Email",
+  "password": "Mật khẩu",
+  "firstName": "Tên",
+  "lastName": "Họ",
+  "phoneNumber": "Số điện thoại",
+  "address": "Địa chỉ",
+  "gender": "Giới tính",
+  "position": "Chức danh",
+  "role": "Vai trò",
+  "image": "Ảnh đại diện",
+  "save": "Lưu users",
+  "update": " Cập nhật user"
+}
+
 
 }
 

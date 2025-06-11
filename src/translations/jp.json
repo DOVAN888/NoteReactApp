@@ -5,8 +5,10 @@
     "doctor": "医師",
     "checkup-package": "健康診断パッケージ",
     "support": "サポート",
+    "welcome":"よこそう, ",
       "search": {
     "placeholder": "専門科を検索"
+     
   },
     "subs": {
       "speciality": "専門医を探す",
@@ -40,19 +42,39 @@
      "video-title":"メディア "
 },
 "menu": {
-    "system": {
-        "header": "システム",
-        "system-administrator": {
-            "header": "システム管理",
-            "user-manage": "ユーザー管理",
-            "user-redux": "パッケージ管理 user redux",
-            "register-package-group-or-account": "グループ/アカウント用パッケージ登録"
-        },
-        "system-parameter": {
-            "header": "システムパラメータ"
-        }
-    }
+   "admin": {
+  "manage-user": "ユーザー",
+  "manage-doctor": "医者の管理",
+  "manage-admin": "管理者の管理",
+  "crud": "ユーザーのCRUD",
+  "crud-redux": "ReduxユーザーのCRUD",
+  "clinic": "クリニック",
+  "manage-clinic": "クリニックの管理",
+  "specialty": "専門科",
+  "manage-specialty": "専門科の管理",
+  "handbook": "ハンドブック",
+  "manage-handbook": "ハンドブックの管理"
 }
+
+
+},
+"manage-user": {
+  "add": "ユーザーを追加",
+  "email": "メールアドレス",
+  "password": "パスワード",
+  "firstName": "名",
+  "lastName": "姓",
+  "phoneNumber": "電話番号",
+  "address": "住所",
+  "gender": "性別",
+  "position": "役職",
+  "role": "役割",
+  "image": "プロフィール画像",
+  "save": "追加",
+   "update": "更新"
+
+}
+
 
 
 }

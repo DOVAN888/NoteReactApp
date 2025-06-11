@@ -1,35 +1,43 @@
 // 🎯 Kết hợp các reducer và cấu hình lưu trữ Redux state (redux-persist)
 
-import { combineReducers } from 'redux';                     // Hàm dùng để gộp tất cả reducer lại thành 1 reducer lớn
-import { connectRouter } from 'connected-react-router';     // Kết nối router với Redux để theo dõi navigation
+import { combineReducers } from 'redux';
+import { connectRouter } from 'connected-react-router';
 
-// 🧩 Import từng reducer quản lý phần riêng của Redux state
-import appReducer from "./appReducer";
-//import adminReducer from "./adminReducer";
-import userReducer from "./userReducer";
+import appReducer from './appReducer';
+import userReducer from './userReducer';
+import adminReducer from './adminReducer';
 
-// 📦 Import các công cụ để thiết lập redux-persist
-import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2'; // Dùng để gộp state khi khôi phục từ localStorage
-import storage from 'redux-persist/lib/storage';            // Sử dụng localStorage làm nơi lưu trữ
-import { persistReducer } from 'redux-persist';             // Hàm gói reducer để kích hoạt tính năng lưu trữ
+import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
+import storage from 'redux-persist/lib/storage';
+import { persistReducer } from 'redux-persist';
 
-// ⚙️ Cấu hình lưu trữ chung (dùng cho tất cả reducer nếu cần)
+// ⚙️ Cấu hình lưu trữ dùng chung
 const persistCommonConfig = {
-    storage: storage,                         // Dùng localStorage (hoặc có thể thay bằng sessionStorage)
-    stateReconciler: autoMergeLevel2          // Gộp state cấp độ 2 khi load lại từ localStorage
+  storage: storage,
+  stateReconciler: autoMergeLevel2,
 };
 
-
-// 🧾 Cấu hình riêng cho reducer user (có thể khác field)
+// 🧾 Cấu hình riêng cho userReducer
 const userPersistConfig = {
-    ...persistCommonConfig,
-    key: 'user',
-    whitelist: ['isLoggedIn', 'userInfo','language']
+  ...persistCommonConfig,
+  key: 'user',
+  whitelist: ['isLoggedIn', 'userInfo'],
 };
 
-// 📦 Trả về một rootReducer đã kết hợp tất cả reducer
-export default (history) => combineReducers({
-    router: connectRouter(history),                               // Gắn router vào Redux (để theo dõi URL hiện tại)
-    user: persistReducer(userPersistConfig, userReducer),         // Gắn redux-persist cho userReducer
-    app: appReducer                                                // Reducer cho UI, không cần persist
-});
+// 🧾 Cấu hình riêng cho appReducer (để lưu ngôn ngữ)
+const appPersistConfig = {
+  ...persistCommonConfig,
+  key: 'app',
+  whitelist: ['language'],
+};
+
+// ✅ Kết hợp tất cả reducer
+const rootReducer = (history) =>
+  combineReducers({
+    router: connectRouter(history),
+    user: persistReducer(userPersistConfig, userReducer),
+    app: persistReducer(appPersistConfig, appReducer),
+    admin: adminReducer, // Không cần persist nếu không lưu gì
+  });
+
+export default rootReducer;

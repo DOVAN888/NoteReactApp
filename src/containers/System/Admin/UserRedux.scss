@@ -1,0 +1,29 @@
+.user-redux-body {
+    scroll-margin-top: 100px;
+    /* hoặc dùng padding/margin tùy header */
+    padding-top: 20px;
+.preview-img-container {
+        .label-upload {
+            padding: 5px;
+            border-radius: 3px;
+            background-color: #ddd;
+            cursor: pointer;
+        }
+
+        &:hover {
+            opacity: 0.9;
+        }
+
+        .preview-image {
+            width: 120px; // ✅ tăng kích thước để nhìn rõ hơn
+            height: 120px;
+            border: 1px solid #ddd;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover; // ✅ dùng 'cover' để ảnh fill hết khung
+            background-color: #f5f5f5; // ✅ để dễ phân biệt nếu ảnh lỗi
+            cursor: pointer;
+        }
+    }
+}
+

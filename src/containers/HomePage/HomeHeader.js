@@ -12,7 +12,7 @@ import { changeLanguageApp } from '../../store/actions/appActions'; // ✅ Impor
 
 class HomeHeader extends Component {
     state = {
-        selectedLang: this.props.language || 'vi', // đồng bộ với Redux ban đầu
+        //selectedLang: this.props.language || 'vi', // đồng bộ với Redux ban đầu
         openLangMenu: false
     };
 
@@ -29,18 +29,15 @@ class HomeHeader extends Component {
         this.props.changeLanguageAppRedux(code); //  Dispatch Redux để đổi ngôn ngữ
     };
 
-    //  Cũng cho phép đổi qua click trong các block riêng (ví dụ ở banner)
-    changeLanguage = (lang) => {
-        this.setState({ selectedLang: lang });
-        this.props.changeLanguageAppRedux(lang);
-    }
+   
 
     render() {
-        const { selectedLang, openLangMenu } = this.state;
-        const currentLang = this.LANGUAGES.find(l => l.code === selectedLang);
+       
+        const {  openLangMenu } = this.state;
+        const currentLang = this.LANGUAGES.find(l => l.code === this.props.language) || this.LANGUAGES[0];
         const { intl } = this.props;
         const placeholderText = intl.formatMessage({ id: 'home-header.search.placeholder' });
-
+         // console.log('check userInfo:',this.props.userInfo);
         return (
             <>
                 <div className='home-header-container'>
@@ -161,6 +158,7 @@ class HomeHeader extends Component {
 const mapStateToProps = state => {
     return {
         isLoggedIn: state.user.isLoggedIn,
+        userInfo:state.user.userInfo,
         language: state.app.language
     };
 };

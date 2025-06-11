@@ -56,16 +56,16 @@ class App extends Component {
                         </div>
 
                         <ToastContainer // Hiển thị toast thông báo (thành công, lỗi, v.v.)
-                            className="toast-container"
-                            toastClassName="toast-item"
-                            bodyClassName="toast-item-body"
-                            autoClose={false}
-                            hideProgressBar={true}
-                            pauseOnHover={false}
-                            pauseOnFocusLoss={true}
-                            closeOnClick={false}
-                            draggable={false}
-                            closeButton={<CustomToastCloseButton />}
+                           className="toast-container"
+                                toastClassName="toast-item"
+                                bodyClassName="toast-item-body"
+                                autoClose={2000}             // ✅ Tự đóng sau 3 giây
+                                hideProgressBar={true}
+                                pauseOnHover={false}
+                                pauseOnFocusLoss={true}
+                                closeOnClick={false}
+                                draggable={false}
+                                closeButton={<CustomToastCloseButton />}
                         />
                     </div>
                 </Router>

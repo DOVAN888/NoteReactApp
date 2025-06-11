@@ -15,13 +15,15 @@ const getAllUsers = (inputId) => {
 const createNewUser = (userData) => {
   // Gửi request POST tới API backend
   console.log('check userdata from service ',userData)
-    return axios.post('api/create-new-users', userData);
+  return axios.post('api/create-new-users', userData);
+ 
 };
 
 // ham edit user
 const updateUser = (userData) => {
-  return axios.put('/api/edit-users',userData)
-}
+  console.log("📦 data gửi tới backend:", userData);
+  return axios.put('/api/edit-users', userData); // trả về nguyên axios response
+};
 
 
 // ham xoa user
@@ -30,8 +32,12 @@ const deleteUser = (userId) => {
         data: { id: userId } // axios yêu cầu phải để `data` khi gửi body cho DELETE data la tenn duoc axios cap nen ko phai la dat ten gi cung duoc ma la no co din roi 
     });
 };
+// lay dong allcode nhu gender ,position 
+const getAllCodeSercice = (inputData) => {
+   return axios.get(`/api/allcode?type=${inputData}`);
+}
 
 
-const userService = { handleLogin, getAllUsers,createNewUser,deleteUser,updateUser };
+const userService = { handleLogin, getAllUsers,createNewUser,deleteUser,updateUser, getAllCodeSercice };
 
 export default userService;

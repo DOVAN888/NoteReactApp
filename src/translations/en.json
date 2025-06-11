@@ -5,8 +5,10 @@
     "doctor": "Doctor",
     "checkup-package": "Checkup Package",
     "support": "Support",
+     "welcome":"Wellcome, ",
     "search": {
     "placeholder": "Search for a specialty"
+    
   },
     "subs": {
       "speciality": "Find a specialist doctor",
@@ -40,19 +42,38 @@
      "video-title":"Media talks "
 },
 "menu": {
-    "system": {
-        "header": "System",
-        "system-administrator": {
-            "header": "System Administration",
-            "user-manage": "User Management",
-            "user-redux": "Package Management Redux",
-            "register-package-group-or-account": "Register package for group/account"
-        },
-        "system-parameter": {
-            "header": "System Parameters"
-        }
-    }
+   "admin": {
+  "manage-user": "User",
+  "manage-doctor": "Manage Doctor",
+  "manage-admin": "Manage Admin",
+  "crud": "CRUD User",
+  "crud-redux": "CRUD User Redux",
+  "clinic": "Clinic",
+  "manage-clinic": "Manage Clinic",
+  "specialty": "Specialty",
+  "manage-specialty": "Manage Specialty",
+  "handbook": "Handbook",
+  "manage-handbook": "Manage Handbook"
 }
+
+
+},
+"manage-user": {
+  "add": "Add new user",
+  "email": "Email",
+  "password": "Password",
+  "firstName": "First name",
+  "lastName": "Last name",
+  "phoneNumber": "Phone number",
+  "address": "Address",
+  "gender": "Gender",
+  "position": "Position",
+  "role": "Role",
+  "image": "Profile image",
+  "save": "Save User",
+  "update": "Update User"
+}
+
 
 
 }
