@@ -21,7 +21,7 @@ const createNewUser = (userData) => {
 
 // ham edit user
 const updateUser = (userData) => {
-  console.log("📦 data gửi tới backend:", userData);
+  console.log(" data gửi tới backend:", userData);
   return axios.put('/api/edit-users', userData); // trả về nguyên axios response
 };
 
@@ -37,7 +37,12 @@ const getAllCodeSercice = (inputData) => {
    return axios.get(`/api/allcode?type=${inputData}`);
 }
 
+// lay bac si noi bat
+export const getTopDoctorService = (limit) => {
+  return axios.get(`/api/top-doctor-home?limit=${limit}`);
+};
 
-const userService = { handleLogin, getAllUsers,createNewUser,deleteUser,updateUser, getAllCodeSercice };
+
+const userService = { handleLogin, getAllUsers,createNewUser,deleteUser,updateUser, getAllCodeSercice,getTopDoctorService };
 
 export default userService;

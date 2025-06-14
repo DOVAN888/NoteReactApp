@@ -3,24 +3,41 @@ import Slider from "react-slick";
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import './OutStandingDoctor.scss';
+import * as actions from '../../../store/actions';
+import { LANGUAGES } from '../../../utils';
 
 class OutStandingDoctor extends Component {
   constructor(props) {
     super(props);
     this.state = {
-                doctors: [
-            { id: 1, name: "Giáo sư, Tiến Sĩ Hỏi Dân IT", clinic: "Cơ Xương Khớp 5", avatar: "https://randomuser.me/api/portraits/men/11.jpg" },
-            { id: 2, name: "Giáo sư, Tiến Sĩ Hỏi Dân IT", clinic: "Cơ Xương Khớp 6", avatar: "https://randomuser.me/api/portraits/men/12.jpg" },
-            { id: 3, name: "Giáo sư, Tiến Sĩ Hỏi Dân IT", clinic: "Cơ Xương Khớp", avatar: "https://randomuser.me/api/portraits/men/13.jpg" },
-            { id: 4, name: "Giáo sư, Tiến Sĩ Hỏi Dân IT", clinic: "Cơ Xương Khớp 2", avatar: "https://randomuser.me/api/portraits/men/14.jpg" },
-            { id: 5, name: "Giáo sư, Tiến Sĩ Hỏi Dân IT", clinic: "Cơ Xương Khớp 1", avatar: "https://randomuser.me/api/portraits/men/15.jpg" }
-            ]
-
+      arrDoctors: []
     };
   }
 
+  componentDidMount() {
+    this.props.loadTopDoctors();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.doctors !== this.props.doctors) {
+      this.setState({
+        arrDoctors: this.props.doctors
+      });
+    }
+  }
+
+  convertBufferToBase64(bufferData) {
+    if (!bufferData || !Array.isArray(bufferData)) return '';
+    const typedArray = new Uint8Array(bufferData);
+    let binary = '';
+    typedArray.forEach(byte => binary += String.fromCharCode(byte));
+    return window.btoa(binary);
+  }
+
   render() {
-   
+    const { sliderSettings, language } = this.props;
+    const { arrDoctors } = this.state;
+
     return (
       <div className='section-outstanding-doctor'>
         <div className='section-header'>
@@ -33,22 +50,32 @@ class OutStandingDoctor extends Component {
         </div>
 
         <div className='outstanding-content'>
-               <Slider
-                    {...this.props.sliderSettings}
-                    slidesToShow={Math.min(this.state.doctors.length, 4)}
-                    >
+          <Slider
+            {...sliderSettings}
+            slidesToShow={Math.min(arrDoctors.length, 4)}
+          >
+            {arrDoctors.map((item, index) => {
+              let nameVi = `${item.positionData?.valueVi || ''}, ${item.lastName || ''} ${item.firstName || ''}`;
+              let nameEn = `${item.positionData?.valueEn || ''}, ${item.firstName || ''} ${item.lastName || ''}`;
+                  let imageBase64=''
+              if (item.image) {
 
-            {this.state.doctors.map((doctor) => (
-              <div className='doctor-card' key={doctor.id}>
-                <div className='img-container'>
-                  <img src={doctor.avatar} alt="avatar" className='doctor-avatar' />
+                imageBase64 = new Buffer(item.image, 'base64').toString('binary');
+              }
+              return (
+                <div className='doctor-card' key={item.id}>
+                  <div className='img-container'>
+                    <img src={imageBase64} alt="avatar" className='doctor-avatar' />
+                  </div>
+                  <div className='doctor-info'>
+                    <div className='doctor-name'>
+                      {language === LANGUAGES.VI ? nameVi : nameEn}
+                    </div>
+                    <div className='doctor-clinic'>{item.clinic || '...'}</div>
+                  </div>
                 </div>
-                <div className='doctor-info'>
-                  <div className='doctor-name'>{doctor.name}</div>
-                  <div className='doctor-clinic'>{doctor.clinic}</div>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </Slider>
         </div>
       </div>
@@ -57,7 +84,12 @@ class OutStandingDoctor extends Component {
 }
 
 const mapStateToProps = state => ({
-  language: state.app.language
+  language: state.app.language,
+  doctors: state.admin.outstandingDoctors
 });
 
-export default connect(mapStateToProps)(injectIntl(OutStandingDoctor));
+const mapDispatchToProps = dispatch => ({
+  loadTopDoctors: () => dispatch(actions.fetchOutstandingDoctorsStart())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(OutStandingDoctor));

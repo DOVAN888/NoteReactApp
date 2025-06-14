@@ -237,3 +237,41 @@ export const deteteUserSucess = () => ({
 export const deleteUserFailed = () => ({
   type: actionTypes.DELETE_USER_FAILED
 });
+
+
+
+
+
+// ham lay ba si noi bat out tanding 
+export const fetchOutstandingDoctorsStart = () => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: actionTypes.FETCH_OUTSTANDING_DOCTORS_START });
+         const limit = 10;
+      let res = await userService.getTopDoctorService(limit); // ← API call
+      let result = res.data
+      console.log("check outtanding api",res)
+      if (result && result.errCode === 0) {
+        dispatch({
+          type: actionTypes.FETCH_OUTSTANDING_DOCTORS_SUCCESS,
+          data: result.data,
+        });
+      } else {
+        dispatch({ type: actionTypes.FETCH_OUTSTANDING_DOCTORS_FAILED });
+      }
+    } catch (e) {
+      dispatch({ type: actionTypes.FETCH_OUTSTANDING_DOCTORS_FAILED });
+      console.error("Fetch failed: ", e);
+    }
+  };
+};
+// Khi lấy bác sĩ nổi bật thành công, truyền dữ liệu vào action
+export const fetchOutstandingDoctorsSuccess = (doctors) => ({
+  type: actionTypes.FETCH_OUTSTANDING_DOCTORS_SUCCESS,
+  data: doctors
+});
+
+// Khi lấy bác sĩ nổi bật thất bại
+export const fetchOutstandingDoctorsFailed = () => ({
+  type: actionTypes.FETCH_OUTSTANDING_DOCTORS_FAILED
+});

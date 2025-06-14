@@ -10,7 +10,10 @@ const initialState = {
     userRedux: null ,      //  nếu bạn muốn lưu riêng user vừa tạo
     fetchUsersError: false,
     usersGetAll: [],
-     getEditUser:[]
+    getEditUser: [],
+    // outanding doctor
+    outstandingDoctors: [],
+  isLoadingDoctors: false
 };
 
 const adminReducer = (state = initialState, action) => {
@@ -158,18 +161,40 @@ const adminReducer = (state = initialState, action) => {
                     };
         //--------------------delete user -------------------------------
           //  Thêm xử lý xóa user thành công
-        case actionTypes.DELETE_USER_SUCCESS:
-            return {
-                ...state,
-                // Bạn có thể để nguyên nếu sau khi xóa, gọi lại fetchAllUserStart() rồi cập nhật state
-            };
+                    case actionTypes.DELETE_USER_SUCCESS:
+                        return {
+                            ...state,
+                            // Bạn có thể để nguyên nếu sau khi xóa, gọi lại fetchAllUserStart() rồi cập nhật state
+                        };
 
-        //  Thêm xử lý xóa user thất bại (nếu muốn)
-        case actionTypes.DELETE_USER_FAILED:
-            return {
-                ...state
-            };
+                    //  Thêm xử lý xóa user thất bại (nếu muốn)
+                    case actionTypes.DELETE_USER_FAILED:
+                        return {
+                            ...state
+                        };
         
+        
+        //-------------outanding doctor -----------------------------------
+
+                            case actionTypes.FETCH_OUTSTANDING_DOCTORS_START:
+                            return {
+                                ...state,
+                                isLoadingDoctors: true
+                            };
+
+                            case actionTypes.FETCH_OUTSTANDING_DOCTORS_SUCCESS:
+                            return {
+                                ...state,
+                                outstandingDoctors: action.data || [],
+                                isLoadingDoctors: false
+                            };
+
+                            case actionTypes.FETCH_OUTSTANDING_DOCTORS_FAILED:
+                            return {
+                                ...state,
+                                outstandingDoctors: [],
+                                isLoadingDoctors: false
+                            };
         default:
             return state;
     }
