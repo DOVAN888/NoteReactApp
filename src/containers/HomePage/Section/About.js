@@ -30,13 +30,16 @@ class About extends Component {
             ></iframe>
           </div>
 
-          <div className="text-description">
-            Ngày mình còn là sinh viên, đi học tại giảng đường đại học, có rất nhiều câu hỏi mà các thầy cô không giúp mình trả lời được, ví dụ như:  
-            <br />
-            “Để trở thành một lập trình viên website thì cần học những gì?”,  
-            <br />
-            “Học công nghệ thông tin, ra trường thường làm những gì?”, v.v.
-          </div>
+      <div className="text-description">
+          人体の構造は、私たちの生命活動を支える驚異的なシステムです。  
+          <br />
+          解剖学では、心臓、肺、脳などの臓器や、血管、神経系などの仕組みを詳細に学びます。  
+          <br />
+          医学を学ぶ上で、身体の構造を理解することは診断・治療の基盤となります。  
+          <br />
+          この知識は医師、看護師、理学療法士などの医療従事者にとって不可欠です。
+        </div>
+
         </div>
       </div>
     );

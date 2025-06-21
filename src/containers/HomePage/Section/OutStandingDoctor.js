@@ -48,36 +48,41 @@ class OutStandingDoctor extends Component {
             <FormattedMessage id="homepage.more-button" />
           </button>
         </div>
-
+ 
         <div className='outstanding-content'>
-          <Slider
-            {...sliderSettings}
-            slidesToShow={Math.min(arrDoctors.length, 4)}
-          >
-            {arrDoctors.map((item, index) => {
-              let nameVi = `${item.positionData?.valueVi || ''}, ${item.lastName || ''} ${item.firstName || ''}`;
-              let nameEn = `${item.positionData?.valueEn || ''}, ${item.firstName || ''} ${item.lastName || ''}`;
-                  let imageBase64=''
-              if (item.image) {
+  {arrDoctors.length > 0 && (
+    <Slider
+      {...sliderSettings}
+      slidesToShow={Math.min(arrDoctors.length, 4)}
+    >
+      {arrDoctors.map((item, index) => {
+        let nameVi = `${item.positionData?.valueVi || ''}, ${item.lastName || ''} ${item.firstName || ''}`;
+        let nameEn = `${item.positionData?.valueEn || ''}, ${item.firstName || ''} ${item.lastName || ''}`;
+        
+        let imageBase64 = ''
+          if (item.image) {
 
                 imageBase64 = new Buffer(item.image, 'base64').toString('binary');
               }
-              return (
-                <div className='doctor-card' key={item.id}>
-                  <div className='img-container'>
-                    <img src={imageBase64} alt="avatar" className='doctor-avatar' />
-                  </div>
-                  <div className='doctor-info'>
-                    <div className='doctor-name'>
-                      {language === LANGUAGES.VI ? nameVi : nameEn}
-                    </div>
-                    <div className='doctor-clinic'>{item.clinic || '...'}</div>
-                  </div>
-                </div>
-              );
-            })}
-          </Slider>
-        </div>
+
+        return (
+          <div className='doctor-card' key={item.id}>
+            <div className='img-container'>
+              <img src={imageBase64} alt="avatar" className='doctor-avatar' />
+            </div>
+            <div className='doctor-info'>
+              <div className='doctor-name'>
+                {language === LANGUAGES.VI ? nameVi : nameEn}
+              </div>
+              <div className='doctor-clinic'>{item.clinic || '...'}</div>
+            </div>
+          </div>
+        );
+      })}
+    </Slider>
+  )}
+</div>
+
       </div>
     );
   }

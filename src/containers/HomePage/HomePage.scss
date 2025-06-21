@@ -50,7 +50,9 @@
      // Mũi tên bên phải
      right: 20px; // Cách mép phải
  }
-
+.slick-disabled {
+    display: none !important;
+}
  .prev-arrow {
      // Mũi tên bên trái
      left: 20px; // Cách mép trái

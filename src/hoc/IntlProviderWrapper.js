@@ -21,9 +21,9 @@ class IntlProviderWrapper extends Component { // component bọc toàn bộ app 
             <IntlProvider
                 locale={language} // đặt locale hiện tại (vi, en, jp...)
                 messages={messages[language]} // truyền danh sách messages tương ứng với locale
-                defaultLocale="vi" // fallback nếu không có locale
+                defaultLocale="vi" // fallback nếu không có locale// render các component con bên trong (App)
             >
-                {children} // render các component con bên trong (App)
+                {children} 
             </IntlProvider>
         );
     }
