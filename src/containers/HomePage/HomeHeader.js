@@ -99,57 +99,59 @@ class HomeHeader extends Component {
                 </div>
 
                 {/* Banner */}
-                <div className='home-header-banner'>
-                    <div className='content-up'>
-                        <div className='title1'><FormattedMessage id="banner.title1" /></div>
-                        <div className='title2'><FormattedMessage id="banner.title2" /></div>
-                        <div className='search'>
-                            <i className="fa-solid fa-magnifying-glass"></i>
-                            <input type='text' placeholder={placeholderText} />
+                {this.props.isShowBaner === true &&
+                    <div className='home-header-banner'>
+                        <div className='content-up'>
+                            <div className='title1'><FormattedMessage id="banner.title1" /></div>
+                            <div className='title2'><FormattedMessage id="banner.title2" /></div>
+                            <div className='search'>
+                                <i className="fa-solid fa-magnifying-glass"></i>
+                                <input type='text' placeholder={placeholderText} />
+                            </div>
                         </div>
-                    </div>
 
-                    <div className='content-down'>
-                        <div className='options'>
-                            <div className='option-child'>
-                                <div className='icon-child'><i className="fa-solid fa-hospital"></i></div>
-                                <div className='text-child'>
-                                    <FormattedMessage id="home-header.option.speciality" />
+                        <div className='content-down'>
+                            <div className='options'>
+                                <div className='option-child'>
+                                    <div className='icon-child'><i className="fa-solid fa-hospital"></i></div>
+                                    <div className='text-child'>
+                                        <FormattedMessage id="home-header.option.speciality" />
+                                    </div>
                                 </div>
-                            </div>
-                            <div className='option-child'>
-                                <div className='icon-child'><i className="fa-solid fa-mobile-retro"></i></div>
-                                <div className='text-child'>
-                                    <FormattedMessage id="home-header.option.remote" />
+                                <div className='option-child'>
+                                    <div className='icon-child'><i className="fa-solid fa-mobile-retro"></i></div>
+                                    <div className='text-child'>
+                                        <FormattedMessage id="home-header.option.remote" />
+                                    </div>
                                 </div>
-                            </div>
-                            <div className='option-child'>
-                                <div className='icon-child'><i className="fa-solid fa-house-medical-circle-check"></i></div>
-                                <div className='text-child'>
-                                    <FormattedMessage id="home-header.option.general" />
+                                <div className='option-child'>
+                                    <div className='icon-child'><i className="fa-solid fa-house-medical-circle-check"></i></div>
+                                    <div className='text-child'>
+                                        <FormattedMessage id="home-header.option.general" />
+                                    </div>
                                 </div>
-                            </div>
-                            <div className='option-child'>
-                                <div className='icon-child'><i className="fa-solid fa-microscope"></i></div>
-                                <div className='text-child'>
-                                    <FormattedMessage id="home-header.option.test" />
+                                <div className='option-child'>
+                                    <div className='icon-child'><i className="fa-solid fa-microscope"></i></div>
+                                    <div className='text-child'>
+                                        <FormattedMessage id="home-header.option.test" />
+                                    </div>
                                 </div>
-                            </div>
-                            <div className='option-child'>
-                                <div className='icon-child'><i className="fa-solid fa-head-side-virus"></i></div>
-                                <div className='text-child'>
-                                    <FormattedMessage id="home-header.option.mental" />
+                                <div className='option-child'>
+                                    <div className='icon-child'><i className="fa-solid fa-head-side-virus"></i></div>
+                                    <div className='text-child'>
+                                        <FormattedMessage id="home-header.option.mental" />
+                                    </div>
                                 </div>
-                            </div>
-                            <div className='option-child'>
-                                <div className='icon-child'><i className="fa-solid fa-tooth"></i></div>
-                                <div className='text-child'>
-                                    <FormattedMessage id="home-header.option.dental" />
+                                <div className='option-child'>
+                                    <div className='icon-child'><i className="fa-solid fa-tooth"></i></div>
+                                    <div className='text-child'>
+                                        <FormattedMessage id="home-header.option.dental" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                }
             </>
         );
     }

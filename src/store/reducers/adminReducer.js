@@ -13,7 +13,9 @@ const initialState = {
     getEditUser: [],
     // outanding doctor
     outstandingDoctors: [],
-  isLoadingDoctors: false
+    isLoadingDoctors: false,
+    allDoctors: [],
+  isSavingDoctor:false
 };
 
 const adminReducer = (state = initialState, action) => {
@@ -195,6 +197,47 @@ const adminReducer = (state = initialState, action) => {
                                 outstandingDoctors: [],
                                 isLoadingDoctors: false
                             };
+
+        //------------all  doctor -----------------------------------
+                        case actionTypes.FETCH_ALL_DOCTORS_START:
+                    return {
+                        ...state,
+                        isLoadingDoctors: true,
+                    };
+
+                    case actionTypes.FETCH_ALL_DOCTORS_SUCCESS:
+                    return {
+                        ...state,
+                        allDoctors: action.data,
+                        isLoadingDoctors: false,
+                    };
+
+                    case actionTypes.FETCH_ALL_DOCTORS_FAILED:
+                    return {
+                        ...state,
+                        allDoctors: [],
+                        isLoadingDoctors: false,
+                    };
+        // phan luu thong tin detail infor 
+             case actionTypes.SAVE_DETAIL_DOCTOR_START:
+                return {
+                    ...state,
+                    isSavingDoctor: true,
+                };
+
+                case actionTypes.SAVE_DETAIL_DOCTOR_SUCCESS:
+                return {
+                    ...state,
+                    isSavingDoctor: false,
+                };
+
+                case actionTypes.SAVE_DETAIL_DOCTOR_FAILED:
+                return {
+                    ...state,
+                    isSavingDoctor: false,
+                };
+
+
         default:
             return state;
     }

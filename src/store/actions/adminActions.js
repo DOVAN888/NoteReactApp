@@ -242,7 +242,7 @@ export const deleteUserFailed = () => ({
 
 
 
-// ham lay ba si noi bat out tanding 
+// ham lay ba si noi bat out tanding =============================================================================
 export const fetchOutstandingDoctorsStart = () => {
   return async (dispatch) => {
     try {
@@ -274,4 +274,75 @@ export const fetchOutstandingDoctorsSuccess = (doctors) => ({
 // Khi lấy bác sĩ nổi bật thất bại
 export const fetchOutstandingDoctorsFailed = () => ({
   type: actionTypes.FETCH_OUTSTANDING_DOCTORS_FAILED
+});
+
+// get all bac si 
+
+// Gọi API lấy tất cả bác sĩ========================================================================
+export const fetchAllDoctorsStart = () => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: actionTypes.FETCH_ALL_DOCTORS_START });
+
+      let res = await userService.getAllDoctorService(); // ✅ gọi hàm getAllDoctors
+      let result = res.data;
+
+      if (result && result.errCode === 0) {
+        dispatch({
+          type: actionTypes.FETCH_ALL_DOCTORS_SUCCESS,
+          data: result.data,
+        });
+      } else {
+        dispatch({ type: actionTypes.FETCH_ALL_DOCTORS_FAILED });
+      }
+    } catch (e) {
+      dispatch({ type: actionTypes.FETCH_ALL_DOCTORS_FAILED });
+      console.error("Fetch all doctors failed: ", e);
+    }
+  };
+};
+
+// Thành công
+export const fetchAllDoctorsSuccess = (doctors) => ({
+  type: actionTypes.FETCH_ALL_DOCTORS_SUCCESS,
+  data: doctors,
+});
+
+// Thất bại
+export const fetchAllDoctorsFailed = () => ({
+  type: actionTypes.FETCH_ALL_DOCTORS_FAILED,
+});
+
+// save detail info doctor===========================================
+export const saveDetailDoctorStart = (doctorData) => {
+  return async (dispatch, getState) => {
+    try {
+      dispatch({ type: actionTypes.SAVE_DETAIL_DOCTOR_START });
+
+      let res = await userService.saveDetailDoctorService(doctorData);
+      console.log("📦 Response save doctor:", res);
+
+      if (res && res.data && res.data.errCode === 0) {
+        toast.success("✅ Doctor information saved successfully.");
+        dispatch(saveDetailDoctorSuccess());
+      } else {
+        toast.error("❌ Failed to save doctor information.");
+        dispatch(saveDetailDoctorFailed());
+        console.error('Save doctor failed:', res?.data?.errMessage || 'Unknown error');
+      }
+    } catch (e) {
+      dispatch(saveDetailDoctorFailed());
+      toast.error("🚨 An unexpected error occurred while saving doctor information.");
+      console.error('Save doctor error:', e);
+    }
+  };
+};
+
+
+export const saveDetailDoctorSuccess = () => ({
+  type: actionTypes.SAVE_DETAIL_DOCTOR_SUCCESS,
+});
+
+export const saveDetailDoctorFailed = () => ({
+  type: actionTypes.SAVE_DETAIL_DOCTOR_FAILED,
 });

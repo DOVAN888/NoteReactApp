@@ -1,217 +1,119 @@
 .home-header-container {
     height: 60px;
-     //border: 1px solid red;
     width: 100%;
     padding: 0 20px;
-   // doan duoi dung de co dinh header
-   background: white;
-   top: 0;
-   position: sticky;
-   z-index: 10000;
+    background: white;
+    top: 0;
+    position: sticky;
+    z-index: 10000;
 
     .home-header-content {
-         width: 100%;
-         height: 100%; //100% cua thang cha 
-         display: flex;// de cac thang co tren cung mot hang ngang 
-        
-         .left-content{.home-header-container {
-                height: 60px;
-                // border: 1px solid red;
-                width: 100%;
-                padding: 0 20px;
-        
-                .home-header-content {
-                    width: 100%;
-                    height: 100%; //100% cua thang cha 
-                    display: flex; // de cac thang co tren cung mot hang ngang 
-        
-                    .left-content {
-                        width: 25%;
-                        border: 1px solid green;
-                        display: flex;
-                        align-items: center; // ✅ căn giữa theo chiều dọc
-                        gap: 10px; // ✅ khoảng cách giữa icon và logo
-        
-                        i {
-                            font-size: 20px; // Tuỳ chỉnh size icon
-                            color: gray;
-                            cursor: pointer;
-                        }
-        
-                        .header-logo {
-                            background: url(../../assets/logo.jpg) center center no-repeat;
-                            background-size: contain; // hoặc cover Giữ nguyên tỉ lệ, không bị méo, không cắt ảnh,Phóng ảnh sao cho phủ kín vùng chứa
-                            height: 100%; // hoặc giá trị phù hợp
-                            width: 100%; // nếu chưa có
-                        }
-        
-                    }
-        
-                    .center-content {
-                        width: 50%;
-                        border: 1px solid orange;
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-        
-        
-                        .child-content {
-                            .subs-title {
-                                font-weight: 200;
-                                font-size: 12px;
-                            }
-                        }
-        
-                    }
-        
-                    .right-content {
-                        width: 25%;
-                        border: 1px solid grey;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                    }
-                }
-            }
-            width:20%;
-          //  border:1px solid green;
-            display: flex;
-            align-items: center; // ✅ căn giữa theo chiều dọc
-              gap: 10px; // ✅ khoảng cách giữa icon và logo
+        width: 100%;
+        height: 100%;
+        display: flex;
 
-          i {
-                font-size: 20px; // Tuỳ chỉnh size icon
+        .left-content {
+            width: 20%;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            i {
+                font-size: 20px;
                 color: gray;
                 cursor: pointer;
-             }
-
-        .header-logo {
-            background: url(../../assets/logo.jpg) center center no-repeat;
-                background-size: contain; // ✅ Hiển thị toàn bộ ảnh, giữ nguyên tỉ lệ
-                height: 50px; // ✅ Chiều cao cố định vừa đẹp (tuỳ chỉnh)
-              width: 200px; // ✅ chiều rộng đủ để ảnh rõ (tùy bạn điều chỉnh lớn hơn nếu cần)
-               
             }
 
-         }
-         .center-content{
+            .header-logo {
+                background: url(../../assets/logo.jpg) center center no-repeat;
+                background-size: contain;
+                height: 50px;
+                width: 200px;
+            }
+        }
+
+        .center-content {
             width: 55%;
-              //  border: 1px solid orange;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
 
-
-            .child-content{
-                .subs-title{
+            .child-content {
+                .subs-title {
                     font-weight: 400;
                     font-size: 12px;
                 }
             }
+        }
 
-         }
-         .right-content{
+        .right-content {
             width: 25%;
-          //  border: 1px solid grey;
             display: flex;
             justify-content: center;
             align-items: center;
 
             .support {
+                display: flex;
+                align-items: center;
+                font-size: 14px;
+                cursor: pointer;
+
+                i {
+                    margin-right: 5px;
+                    font-size: 15px;
+                }
+            }
+
+            .lang-dropdown {
+                position: relative;
+
+                .lang-toggle {
+                    cursor: pointer;
+                    padding: 4px 8px;
+                    border-radius: 4px;
+                    background-color: #f0f0f0;
                     display: flex;
                     align-items: center;
-                    font-size: 14px;
-                    cursor: pointer;
-            
-                    i {
-                        margin-right: 5px; // Khoảng cách giữa icon và chữ
-                        font-size: 15px;
+
+                    img {
+                        width: 24px;
+                        height: 16px;
                     }
                 }
-            
-                // .language-select{
-                //     margin-left: 12px;
-                //         padding: 5px 10px;
-                //        // border: 1px solid #ccc;
-                //         border-radius: 4px;
-                //         background-color: #f5f5f5;;
-                //         font-size: 12px;
-                //         font-family: 'Segoe UI', Roboto, sans-serif; // ✅ font đẹp, đồng bộ với UI hiện đại
-                //         font-weight: 500;
-                //         color: #333;
-                //         outline: none;
-                //         cursor: pointer;
-                //         transition: all 0.2s ease;
-                     
-                //         text-align: center;
-                //         align-items: center;
-                    
-                //         &:hover {
-                //             border-color: #49bce2;
-                //             background-color: #fff;
-                //         }
-                //         .vi {
-                //         background-color: #de8d8c; // Đỏ VN
-                //         }
 
-                //         .en {
-                //         background-color: #72aee2; // Xanh EN
-                //         }
+                .lang-menu {
+                    position: absolute;
+                    top: 110%;
+                    right: 0;
+                    background: #333;
+                    color: white;
+                    border-radius: 6px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+                    z-index: 100;
+                    min-width: 150px;
 
-                //         .jp {
-                //         background-color: #e9c66e; // Vàng JP
-                //         }
-                // }
-                .lang-dropdown {
-                    position: relative;
-                
-                    .lang-toggle {
-                        cursor: pointer;
-                       // border: 1px solid #ccc;
-                        padding: 4px 8px;
-                        border-radius: 4px;
-                        background-color: #f0f0f0;
+                    .lang-item {
                         display: flex;
                         align-items: center;
-                
+                        gap: 10px;
+                        padding: 8px 12px;
+                        cursor: pointer;
+
                         img {
-                            width: 24px;
-                            height: 16px;
+                            width: 20px;
+                            height: 14px;
                         }
-                    }
-                
-                    .lang-menu {
-                        position: absolute;
-                        top: 110%; // Đặt menu ngay dưới phần tử toggle, dịch xuống 110% chiều cao của phần tử cha
-                        right: 0; // Canh lề phải sát mép phần tử cha
-                        background: #333;
-                        color: white;
-                        border-radius: 6px;
-                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-                        z-index: 100;//// Đảm bảo nằm trên các phần tử khác (nếu bị đè)
-                        min-width: 150px;
-                
-                        .lang-item {
-                            display: flex;
-                            align-items: center;
-                            gap: 10px;
-                            padding: 8px 12px;
-                            cursor: pointer;
-                
-                            img {
-                                width: 20px;
-                                height: 14px;
-                            }
-                
-                            &:hover {
-                                background-color: #444;
-                            }
+
+                        &:hover {
+                            background-color: #444;
                         }
                     }
                 }
-         }
+            }
+        }
     }
 }
+
 .home-header-banner{
 background-image:url(../../assets/banner5.jpg),linear-gradient(rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0.1));
     background-size: cover; // Ảnh phủ kín

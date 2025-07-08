@@ -11,6 +11,7 @@ import { path } from '../utils'; // Các đường dẫn định nghĩa sẵn
 import Home from '../routes/Home'; // Trang Home
 import Login from './Auth/Login'; // Component Login
 import System from '../routes/System'; // Trang hệ thống quản trị
+import DetailDoctor from './Patient/Doctor/DetailDoctor';
 
 import HomePage from './HomePage/HomePage';
 
@@ -51,6 +52,9 @@ class App extends Component {
                                 <Route path={path.LOGIN} component={userIsNotAuthenticated(Login)} /> {/* Trang Login, chỉ vào nếu chưa login */}
                                 <Route path={path.SYSTEM} component={userIsAuthenticated(System)} /> {/* Trang System, chỉ vào nếu đã login */}
                                 <Route path={path.HOMEPAGE} component={HomePage} /> {/* Route mặc định fallback */}
+                                {/* <Route path="/users/:id" component={DetailDoctor} /> */}
+                                    <Route path={path.DETAIL_DOCTOR} component={DetailDoctor} />
+
                                 </Switch>
                                 </CustomScrollbars>
                         </div>

@@ -42,7 +42,25 @@ export const getTopDoctorService = (limit) => {
   return axios.get(`/api/top-doctor-home?limit=${limit}`);
 };
 
+// lay tat ca bac si co roleId = R2
+export const getAllDoctorService = () => {
+  return axios.get(`/api/get-all-doctors`);
+};
+// luu bac si chi tiet mardown 
 
-const userService = { handleLogin, getAllUsers,createNewUser,deleteUser,updateUser, getAllCodeSercice,getTopDoctorService };
+export const saveDetailDoctorService= (data) => {
+  return axios.post('/api/save-info-doctors', data);// truyen luon cuc data len phia service 
+  
+};
+export const getDetailInfordoctor = (inputId) => {
+     return axios.get(`/api/get-detail-doctor-by-id?id=${inputId}`);
+
+ }
+
+const userService = {
+  handleLogin, getAllUsers, createNewUser, deleteUser, updateUser,
+  getAllCodeSercice, getTopDoctorService, getAllDoctorService, saveDetailDoctorService,
+  getDetailInfordoctor
+};
 
 export default userService;

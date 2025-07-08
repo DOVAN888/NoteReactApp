@@ -49,6 +49,24 @@
                 font-size: 12px;
                 color: gray;
             }
+            .view-detail-button {
+                margin-top: 10px;
+                padding: 6px 18px;
+                background-color: #f0b429; // cam vàng nhạt
+                color: #333;
+                border: none;
+                border-radius: 20px;
+                font-size: 14px;
+                font-weight: 500;
+                cursor: pointer;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
+
+                &:hover {
+                    background-color: #e1a527;
+                    transform: scale(1.03);
+                }
+            }
         }
     }
 }

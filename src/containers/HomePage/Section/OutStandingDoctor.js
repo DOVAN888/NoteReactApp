@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import Slider from "react-slick";
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
+import { Navigate } from 'react-router-dom';
+import { withRouter } from 'react-router-dom/cjs/react-router-dom.min';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import './OutStandingDoctor.scss';
@@ -33,6 +36,13 @@ class OutStandingDoctor extends Component {
     typedArray.forEach(byte => binary += String.fromCharCode(byte));
     return window.btoa(binary);
   }
+
+  // ham di chuyen den detail doctor
+ handleViewDetailDoctor = (doctor) => {
+  if (this.props.history) {
+    this.props.history.push(`/detail-doctor/${doctor.id}`);
+  }
+};
 
   render() {
     const { sliderSettings, language } = this.props;
@@ -75,6 +85,14 @@ class OutStandingDoctor extends Component {
                 {language === LANGUAGES.VI ? nameVi : nameEn}
               </div>
               <div className='doctor-clinic'>{item.clinic || '...'}</div>
+
+              {/* Nút chuyển trang chi tiết */}
+              <button
+                className="view-detail-button"
+                onClick={() => this.handleViewDetailDoctor(item)}
+              >
+                Xem chi tiết
+              </button>
             </div>
           </div>
         );
@@ -97,4 +115,4 @@ const mapDispatchToProps = dispatch => ({
   loadTopDoctors: () => dispatch(actions.fetchOutstandingDoctorsStart())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(OutStandingDoctor));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(injectIntl(OutStandingDoctor)));
