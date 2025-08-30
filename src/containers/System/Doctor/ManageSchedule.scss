@@ -1,0 +1,134 @@
+.schedule-container {
+  margin-top: 100px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  .title {
+    font-weight: bold;
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #007bff;
+  }
+
+  .form-group {
+    display: inline-block;
+    width: 45%;
+    margin-right: 5%;
+    margin-bottom: 15px;
+
+    label {
+      font-weight: 500;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 8px 10px;
+      height: 38px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+  }
+
+  .time-slots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+
+    .btn-time {
+      padding: 8px 16px;
+      border: 1px solid #ccc;
+      background: #f8f9fa;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &:hover:not(:disabled) {
+        background: #007bff;
+        color: #fff;
+      }
+
+      &.selected {
+        background-color: #007bff;
+        color: #fff;
+        font-weight: bold;
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        background: #f1f1f1;
+        color: #999;
+      }
+    }
+  }
+
+  .btn-save {
+    margin-top: 20px;
+    padding: 8px 16px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    outline: none;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+
+  .section-divider {
+    border-top: 1px solid #ddd;
+    margin: 30px 0;
+  }
+
+  h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #333;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    th {
+    background-color: #007bff; /* 🎨 header màu xanh dương đậm */
+    color: #fff; /* chữ trắng */
+    font-weight: 600;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f9f9f9; /* row chẵn nền xám nhạt */
+  }
+  }
+
+  .loading {
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+}

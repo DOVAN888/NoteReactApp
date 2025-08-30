@@ -1,0 +1,42 @@
+.modal {
+    margin-top: 30px;
+  .modal-dialog {
+    max-height: 90vh;
+    overflow-y: auto;
+
+    .modal-content {
+      display: flex;
+      flex-direction: column;
+      max-height: 90vh;
+      overflow: hidden;
+
+      .modal-header {
+        padding: 0 10px;
+        height: 35px;
+        background-color: #579507;
+        color: white;
+        flex-shrink: 0;
+      }
+
+      .modal-body {
+        padding: 1rem;
+        overflow-y: auto;
+        max-height: calc(90vh - 35px - 60px); // trừ chiều cao header và footer
+        flex-grow: 1;
+      }
+
+      .modal-footer {
+        flex-shrink: 0;
+      }
+    }
+  }
+}
+
+.confirm {
+  text-align: center;
+  background-color: #579507;
+
+  &:hover {
+    background-color: #315205;
+  }
+}

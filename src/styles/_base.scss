@@ -78,7 +78,10 @@
     -webkit-box-shadow: 2px 2px 4px 0 $box-shadow-color;
   }
 }
-
+.toastContainer {
+  z-index: 20000 !important;
+  top: 70px !important;
+}
 .modal {
   .modal-dialog {
     .modal-content {

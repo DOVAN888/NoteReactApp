@@ -1,42 +1,55 @@
-.doctor-detail-container{
-    height:500px;
-    margin: 0 100px;
-    border: 1px solid red;
-    .intro-doctor{
-        display: flex;
-        border: 1px solid grey;
-        .content-left{
-            width: 20%;
-            border: 1px solid green;
+.doctor-detail-container {
+  line-height: 1.7;  //  Để text dễ đọc hơn
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 
-        }
-        .content-left{
-          
-            width: 120px;
-                height: 120px;
-                border-radius: 50%;
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
-                border: 2px solid #00bfa5;
-                margin-right: 30px;
-        }
-        .content-right{
-            width:80%;
-            border: 1px solid grey;
-            display: flex;
-            flex-direction: column;
-            padding-left: 10px;
-            .up{
-                font-size :20px;
-                font-weight: 600;
-                padding-top: 15px;
-            }
-            .down{
-                padding-top: 10px;
-            }
+  .intro-doctor {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
 
-        }
-
+    .content-left {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      border: 3px solid #00bfa5;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      flex-shrink: 0;
     }
+
+    .content-right {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      .up {
+        font-size: 22px;
+        font-weight: 700;
+        color: #333;
+      }
+
+      .down {
+        margin-top: 8px;
+        font-size: 15px;
+        color: #666;
+      }
+    }
+  }
+
+  .schedule-doctor,
+  .detail-infor-doctor,
+  .comment-doctor {
+    margin-top: 20px;
+  }
 }

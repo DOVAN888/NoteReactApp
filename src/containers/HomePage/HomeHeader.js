@@ -1,43 +1,43 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './HomeHeader.scss';
-import { FormattedMessage, injectIntl } from 'react-intl'; // ✨ Hỗ trợ đổi ngôn ngữ quốc tế
+import { withRouter } from 'react-router-dom/cjs/react-router-dom.min';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
 //  Import cờ quốc gia
 import vn from '../../assets/flags/vn.png';
 import en from '../../assets/flags/en.png';
 import jp from '../../assets/flags/jp.png';
-import { changeLanguageApp } from '../../store/actions/appActions'; // ✅ Import action đổi ngôn ngữ
+import { changeLanguageApp } from '../../store/actions/appActions';
 
 class HomeHeader extends Component {
     state = {
-        //selectedLang: this.props.language || 'vi', // đồng bộ với Redux ban đầu
         openLangMenu: false
     };
 
-    //  Danh sách ngôn ngữ có sẵn
     LANGUAGES = [
         { code: 'vi', label: 'Tiếng Việt', icon: vn },
         { code: 'en', label: 'English', icon: en },
         { code: 'jp', label: '日本語', icon: jp }
     ];
 
-    //  Khi click chọn ngôn ngữ
     handleLangSelect = (code) => {
-        this.setState({ selectedLang: code, openLangMenu: false });
-        this.props.changeLanguageAppRedux(code); //  Dispatch Redux để đổi ngôn ngữ
+        this.setState({ openLangMenu: false });
+        this.props.changeLanguageAppRedux(code);
     };
 
-   
+    returnToHome = () => {
+        if (this.props.history) {
+            this.props.history.push('/home');
+        }
+    };
 
     render() {
-       
-        const {  openLangMenu } = this.state;
+        const { openLangMenu } = this.state;
         const currentLang = this.LANGUAGES.find(l => l.code === this.props.language) || this.LANGUAGES[0];
         const { intl } = this.props;
         const placeholderText = intl.formatMessage({ id: 'home-header.search.placeholder' });
-         // console.log('check userInfo:',this.props.userInfo);
+
         return (
             <>
                 <div className='home-header-container'>
@@ -45,7 +45,10 @@ class HomeHeader extends Component {
                         {/* Logo + menu */}
                         <div className='left-content'>
                             <i className="fa-solid fa-bars"></i>
-                            <div className='header-logo'></div>
+                            <div
+                                className='header-logo'
+                                onClick={this.returnToHome}
+                            ></div>
                         </div>
 
                         {/* Menu giữa */}
@@ -78,7 +81,9 @@ class HomeHeader extends Component {
 
                         {/* Ngôn ngữ */}
                         <div className='right-content'>
-                            <div className='support'><i className="fa-solid fa-circle-question"></i> <FormattedMessage id="home-header.support" /></div>
+                            <div className='support'>
+                                <i className="fa-solid fa-circle-question"></i> <FormattedMessage id="home-header.support" />
+                            </div>
                             <div className='lang-dropdown'>
                                 <div className='lang-toggle' onClick={() => this.setState({ openLangMenu: !openLangMenu })}>
                                     <img src={currentLang.icon} alt={currentLang.code} />
@@ -112,6 +117,7 @@ class HomeHeader extends Component {
 
                         <div className='content-down'>
                             <div className='options'>
+                                {/* Các option-child giữ nguyên */}
                                 <div className='option-child'>
                                     <div className='icon-child'><i className="fa-solid fa-hospital"></i></div>
                                     <div className='text-child'>
@@ -160,7 +166,7 @@ class HomeHeader extends Component {
 const mapStateToProps = state => {
     return {
         isLoggedIn: state.user.isLoggedIn,
-        userInfo:state.user.userInfo,
+        userInfo: state.user.userInfo,
         language: state.app.language
     };
 };
@@ -171,4 +177,5 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(HomeHeader));
+// Sửa cú pháp export đúng:
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(injectIntl(HomeHeader)));

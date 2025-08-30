@@ -15,7 +15,31 @@ const initialState = {
     outstandingDoctors: [],
     isLoadingDoctors: false,
     allDoctors: [],
-  isSavingDoctor:false
+    isSavingDoctor: false,
+    allTimes: [],
+    //
+    isSavingSchedule: false,
+     saveScheduleSuccess: false,
+    saveScheduleError: false,
+    saveScheduleMessage: '',
+    //
+    allSchedules: [],
+    isFetchingSchedules: false,
+    //delete time date
+     isDeletingSchedules: false,
+    deleteScheduleSuccess: false,
+    deleteScheduleMessage: '',
+
+  // full allcode get stype
+    allPrices: [],
+  allPayments: [],
+  allProvinces: [],
+  isLoadingAllCode: false,
+  // booking
+   isBookingLoading: false,
+  bookingData: null,
+  bookingError: null
+    
 };
 
 const adminReducer = (state = initialState, action) => {
@@ -236,6 +260,185 @@ const adminReducer = (state = initialState, action) => {
                     ...state,
                     isSavingDoctor: false,
                 };
+
+        // phan time lich hen ========================================================-
+         case actionTypes.FETCH_ALL_TIMES_START:
+            return {
+                ...state
+            };
+
+            case actionTypes.FETCH_ALL_TIMES_SUCCESS:
+            return {
+                ...state,
+                allTimes: action.data   // ✅ Cập nhật allTimes từ action payload
+            };
+
+            case actionTypes.FETCH_ALL_TIMES_FAILED:
+            return {
+                ...state,
+                allTimes: []    // ✅ Nếu fail thì set mảng rỗng
+            };
+        // phan lu dat lich slot time =========================================================================
+         case actionTypes.SAVE_SCHEDULE_START:
+      return {
+        ...state,
+        isSavingSchedule: true,
+        saveScheduleSuccess: false,
+        saveScheduleError: false,
+        saveScheduleMessage: ''
+      };
+
+    case actionTypes.SAVE_SCHEDULE_SUCCESS:
+      return {
+        ...state,
+        isSavingSchedule: false,
+        saveScheduleSuccess: true,
+        saveScheduleError: false,
+        saveScheduleMessage: action.message
+      };
+
+    case actionTypes.SAVE_SCHEDULE_FAILED:
+      return {
+        ...state,
+        isSavingSchedule: false,
+        saveScheduleSuccess: false,
+        saveScheduleError: true,
+        saveScheduleMessage: 'Failed to save schedule.'
+      };
+
+       // ===== FETCH SCHEDULES BY DOCTOR =====
+    case actionTypes.FETCH_SCHEDULES_BY_DOCTOR_START:
+      return {
+        ...state,
+        isFetchingSchedules: true
+      };
+
+    case actionTypes.FETCH_SCHEDULES_BY_DOCTOR_SUCCESS:
+      return {
+        ...state,
+        isFetchingSchedules: false,
+        allSchedules: action.schedules
+      };
+
+    case actionTypes.FETCH_SCHEDULES_BY_DOCTOR_FAILED:
+      return {
+        ...state,
+        isFetchingSchedules: false,
+        allSchedules: []
+      };
+
+         // 🔹 Delete schedules by date cases...================================================
+    case actionTypes.DELETE_SCHEDULES_BY_DATE_START:
+      return {
+        ...state,
+        isDeletingSchedules: true,
+        deleteScheduleSuccess: false,
+        deleteScheduleMessage: ''
+      };
+
+    case actionTypes.DELETE_SCHEDULES_BY_DATE_SUCCESS:
+      return {
+        ...state,
+        isDeletingSchedules: false,
+        deleteScheduleSuccess: true,
+        deleteScheduleMessage: action.message || 'Deleted successfully'
+      };
+
+    case actionTypes.DELETE_SCHEDULES_BY_DATE_FAILED:
+      return {
+        ...state,
+        isDeletingSchedules: false,
+        deleteScheduleSuccess: false,
+        deleteScheduleMessage: 'Failed to delete schedules'
+      };
+
+
+      //==================================================-full allcode get by type
+        case actionTypes.FETCH_ALLCODE_START:
+      return {
+        ...state,
+        isLoadingAllCode: true,
+      };
+
+    // FETCH_ALLCODE_SUCCESS
+    case actionTypes.FETCH_ALLCODE_SUCCESS:
+      if (action.codeType === 'PRICE') {
+        return {
+          ...state,
+          allPrices: action.data,
+          isLoadingAllCode: false,
+        };
+      }
+      if (action.codeType === 'PAYMENT') {
+        return {
+          ...state,
+          allPayments: action.data,
+          isLoadingAllCode: false,
+        };
+      }
+      if (action.codeType === 'PROVINCE') {
+        return {
+          ...state,
+          allProvinces: action.data,
+          isLoadingAllCode: false,
+        };
+      }
+      return {
+        ...state,
+        isLoadingAllCode: false,
+      };
+
+    // FETCH_ALLCODE_FAILED
+    case actionTypes.FETCH_ALLCODE_FAILED:
+      if (action.codeType === 'PRICE') {
+        return {
+          ...state,
+          allPrices: [],
+          isLoadingAllCode: false,
+        };
+      }
+      if (action.codeType === 'PAYMENT') {
+        return {
+          ...state,
+          allPayments: [],
+          isLoadingAllCode: false,
+        };
+      }
+      if (action.codeType === 'PROVINCE') {
+        return {
+          ...state,
+          allProvinces: [],
+          isLoadingAllCode: false,
+        };
+      }
+      return {
+        ...state,
+        isLoadingAllCode: false,
+      };
+
+      // post booking =========================================================
+    case actionTypes.CREATE_BOOKING_START:
+      return {
+        ...state,
+        isBookingLoading: true,
+        bookingError: null
+      };
+
+    case actionTypes.CREATE_BOOKING_SUCCESS:
+      return {
+        ...state,
+        isBookingLoading: false,
+        bookingData: action.data,
+        bookingError: null
+      };
+
+    case actionTypes.CREATE_BOOKING_FAILED:
+      return {
+        ...state,
+        isBookingLoading: false,
+        bookingData: null,
+        bookingError: action.error
+      };
 
 
         default:

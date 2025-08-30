@@ -55,12 +55,33 @@ export const saveDetailDoctorService= (data) => {
 export const getDetailInfordoctor = (inputId) => {
      return axios.get(`/api/get-detail-doctor-by-id?id=${inputId}`);
 
- }
+}
+ // save doctor time 
+export const saveDoctorSchedule = (data) => {
+  return axios.post('/api/bulk-create-schedule', data);
+};
 
+// get all bydoctor time 
+export const getSchedulesByDoctor = (doctorId) => {
+  return axios.get(`/api/get-schedules-by-doctor`, {
+    params: { doctorId }  // Gửi doctorId qua query param
+  });
+};
+// delete bydoctor time 
+export const deleteSchedulesByDate = (doctorId, date) => {
+  return axios.delete(`/api/delete-schedules-by-date`, {
+    params: { doctorId, date }  // Gửi query param đúng
+  });
+};
+// post booking 
+export const postBookingAppointment = (data) => {
+    console.log('check userdata from service ',data)
+   return axios.post('api/create-booking',data);
+}
 const userService = {
   handleLogin, getAllUsers, createNewUser, deleteUser, updateUser,
   getAllCodeSercice, getTopDoctorService, getAllDoctorService, saveDetailDoctorService,
-  getDetailInfordoctor
+  getDetailInfordoctor,saveDoctorSchedule,getSchedulesByDoctor,deleteSchedulesByDate,postBookingAppointment
 };
 
 export default userService;

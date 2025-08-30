@@ -1,0 +1,85 @@
+ .doctor-schedule-container {
+  border: 1px solid #ddd;
+  padding: 16px;
+  margin-top: 20px;
+
+  .schedule-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+
+    span {
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+    }
+
+    .date-select {
+      padding: 4px 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      outline: none;
+      cursor: pointer;
+    }
+  }
+
+  .schedule-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+
+  .time-slots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center; /* Đảm bảo các nút cùng baseline */
+
+    .time-slot-btn {
+      background-color: #fff8b3;
+      border: 1px solid #999;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.4;
+      box-sizing: border-box;
+      transition: all 0.2s;
+      white-space: nowrap;
+      height: 38px; /* 👈 Đảm bảo nút đồng đều chiều cao */
+      min-width: 100px;
+      
+
+      &:hover:not(:disabled) {
+        background-color: #ece231;
+        border-color: #666;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      &:disabled {
+        background-color: #f0f0f0;
+        color: #aaa;
+        cursor: not-allowed;
+        border-color: #ccc;
+      }
+    }
+  }
+
+  .clinic-info {
+    max-width: 330px;
+   
+    font-size: 14px;
+    padding-left: 16px;
+    border-left: 1px solid #ddd;
+    margin-left: 8px;
+
+    p {
+      margin: 4px 0;
+      word-break: break-word;
+    }
+  }
+}
+
+}

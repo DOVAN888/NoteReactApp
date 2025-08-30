@@ -346,3 +346,223 @@ export const saveDetailDoctorSuccess = () => ({
 export const saveDetailDoctorFailed = () => ({
   type: actionTypes.SAVE_DETAIL_DOCTOR_FAILED,
 });
+
+//================================----------------------------===============================================
+// lay thoi gian lich kham benh // Gọi API lấy TIME lịch khám bệnh
+export const fetchAllTimesStart = () => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: actionTypes.FETCH_ALL_TIMES_START });
+
+      let res = await userService.getAllCodeSercice("TIME");  // ✅ API backend nhận type = "TIME"
+
+     
+      let result = res.data;
+      // console.log('check action service',result)
+
+      if (result && result.errCode === 0) {
+        dispatch({
+          type: actionTypes.FETCH_ALL_TIMES_SUCCESS,
+          data: result.data,
+        });
+      } else {
+        dispatch({ type: actionTypes.FETCH_ALL_TIMES_FAILED });
+      }
+    } catch (e) {
+      dispatch({ type: actionTypes.FETCH_ALL_TIMES_FAILED });
+      console.error("Fetch all times failed: ", e);
+    }
+  };
+};
+
+// Thành công
+export const fetchAllTimesSuccess = (times) => ({
+  type: actionTypes.FETCH_ALL_TIMES_SUCCESS,
+  data: times,
+});
+
+// Thất bại
+export const fetchAllTimesFailed = () => ({
+  type: actionTypes.FETCH_ALL_TIMES_FAILED,
+});
+
+
+
+// Action saveDoctorSchedule========================================================================--
+export const saveDoctorSchedule = (scheduleData) => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: actionTypes.SAVE_SCHEDULE_START });
+
+      let res = await userService.saveDoctorSchedule(scheduleData); // Gọi API lưu schedule
+
+      let result = res.data;
+      // console.log('check save schedule result:', result);
+
+      if (result && result.errCode === 0) {
+        dispatch({
+          type: actionTypes.SAVE_SCHEDULE_SUCCESS,
+          message: result.message
+        });
+      } else {
+        dispatch({ type: actionTypes.SAVE_SCHEDULE_FAILED });
+      }
+    } catch (e) {
+      dispatch({ type: actionTypes.SAVE_SCHEDULE_FAILED });
+      console.error('Save doctor schedule failed:', e);
+    }
+  };
+};
+
+// Action đơn giản nếu cần export riêng
+export const saveDoctorScheduleSuccess = (message) => ({
+  type: actionTypes.SAVE_SCHEDULE_SUCCESS,
+  message
+});
+
+export const saveDoctorScheduleFailed = () => ({
+  type: actionTypes.SAVE_SCHEDULE_FAILED
+});
+
+// ========================================================================
+// Action get all schedules by doctor (lấy lịch khám theo bác sĩ)
+export const fetchSchedulesByDoctor = (doctorId) => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: actionTypes.FETCH_SCHEDULES_BY_DOCTOR_START });
+
+      let res = await userService.getSchedulesByDoctor(doctorId); // Gọi API lấy schedule theo doctorId
+       console.log('API getSchedulesByDoctor response:', res.data);
+
+      let result = res.data;
+
+      if (result && result.errCode === 0) {
+        dispatch({
+          type: actionTypes.FETCH_SCHEDULES_BY_DOCTOR_SUCCESS,
+          schedules: result.data
+        });
+      } else {
+        dispatch({ type: actionTypes.FETCH_SCHEDULES_BY_DOCTOR_FAILED });
+      }
+    } catch (e) {
+      dispatch({ type: actionTypes.FETCH_SCHEDULES_BY_DOCTOR_FAILED });
+      console.error('Fetch schedules by doctor failed:', e);
+    }
+  };
+};
+
+export const fetchSchedulesByDoctorSuccess = (schedules) => ({
+  type: actionTypes.FETCH_SCHEDULES_BY_DOCTOR_SUCCESS,
+  schedules
+});
+
+export const fetchSchedulesByDoctorFailed = () => ({
+  type: actionTypes.FETCH_SCHEDULES_BY_DOCTOR_FAILED
+});
+
+// ========================================================================
+// Action delete schedules by doctor + date
+export const deleteSchedulesByDate = (doctorId, date) => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: actionTypes.DELETE_SCHEDULES_BY_DATE_START });
+
+      let res = await userService.deleteSchedulesByDate(doctorId, date);
+      console.log('API deleteSchedulesByDate response:', res.data);
+
+      let result = res.data;
+
+      if (result && result.errCode === 0) {
+        dispatch({
+          type: actionTypes.DELETE_SCHEDULES_BY_DATE_SUCCESS,
+          message: result.message || 'Deleted successfully'
+        });
+
+        // Có thể fetch lại schedules mới nhất ngay sau khi xóa thành công:
+        dispatch(fetchSchedulesByDoctor(doctorId));
+      } else {
+        dispatch({ type: actionTypes.DELETE_SCHEDULES_BY_DATE_FAILED });
+      }
+    } catch (e) {
+      dispatch({ type: actionTypes.DELETE_SCHEDULES_BY_DATE_FAILED });
+      console.error('Delete schedules by date failed:', e);
+    }
+  };
+};
+
+// Action đơn giản nếu cần export riêng
+export const deleteSchedulesByDateSuccess = (message) => ({
+  type: actionTypes.DELETE_SCHEDULES_BY_DATE_SUCCESS,
+  message
+});
+
+export const deleteSchedulesByDateFailed = () => ({
+  type: actionTypes.DELETE_SCHEDULES_BY_DATE_FAILED
+});
+
+// 🔹 Action fetchAllCodeStart để lấy allcode theo type =========================================================================
+export const fetchAllCodeStart = (type) => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: actionTypes.FETCH_ALLCODE_START, codeType: type });
+
+      let res = await userService.getAllCodeSercice(type);
+      const result = res.data;
+
+      if (result && result.errCode === 0) {
+        dispatch(fetchAllCodeSuccess(type, result.data));
+      } else {
+        dispatch(fetchAllCodeFailed(type));
+      }
+    } catch (e) {
+      console.error(`fetchAllCode ${type} error:`, e);
+      dispatch(fetchAllCodeFailed(type));
+    }
+  };
+};
+
+// 🔹 Success action
+export const fetchAllCodeSuccess = (codeType, data) => ({
+  type: actionTypes.FETCH_ALLCODE_SUCCESS,
+  codeType,
+  data,
+});
+
+// 🔹 Failed action
+export const fetchAllCodeFailed = (codeType) => ({
+  type: actionTypes.FETCH_ALLCODE_FAILED,
+  codeType,
+});
+
+//booking create 
+export const createBookingStart = (bookingData) => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: actionTypes.CREATE_BOOKING_START });
+
+      const res = await userService.postBookingAppointment(bookingData); // Gọi API backend
+      const result = res.data;
+
+      if (result && result.errCode === 0) {
+        dispatch(createBookingSuccess(result.data));
+      } else {
+        dispatch(createBookingFailed(result.message || 'Booking failed'));
+      }
+    } catch (e) {
+      console.error('❌ createBooking error:', e);
+      dispatch(createBookingFailed('Internal Server Error'));
+    }
+  };
+};
+
+// 🔹 Thành công
+export const createBookingSuccess = (data) => ({
+  type: actionTypes.CREATE_BOOKING_SUCCESS,
+  data,
+});
+
+// 🔹 Thất bại
+export const createBookingFailed = (errorMessage) => ({
+  type: actionTypes.CREATE_BOOKING_FAILED,
+  errorMessage,
+});

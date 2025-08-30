@@ -72,12 +72,21 @@ handleLogin = async () => {
              })
     }
 
+    // ki nhan enter thi login luon 
+    handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            this.handleLogin()
+            console.log('do validate');
+        }
+        };
+
+
     render() {
         return (
             <React.Fragment>
                 <div className='login-background'>
                     <div className='login-container'>
-                        <div className='login-content'>
+                        <div className='login-content'tabIndex="0" onKeyDown={this.handleKeyDown}>
                             <div className='col-12 text-login'>Login</div>
                             <div className='col-12 form-group login-input'>
                                 <label>Username</label>
@@ -88,6 +97,7 @@ handleLogin = async () => {
                                     placeholder='Enter your username'
                                     value={this.state.username}
                                     onChange={(event) => this.handleOnChangeInputUsername(event)}
+                                     onKeyDown={this.handleKeyDown}  // 👈 Thêm dòng này
                                 />
                             </div>
                          <div className='col-12 form-group login-input'>
@@ -100,6 +110,7 @@ handleLogin = async () => {
                                         placeholder='Enter your password'
                                         value={this.state.password}
                                         onChange={(event) => this.handleOnChangeInputPassword(event)}
+                                        onKeyDown={this.handleKeyDown}
                                     />
                                     <span onClick={()=>this.handleShowHidePassword()}>
                                         <i class={ this.state.isShowPassword?'fa-solid fa-eye':'fa-solid fa-eye-slash'}></i>

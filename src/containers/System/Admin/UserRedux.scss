@@ -1,29 +1,58 @@
+.user-redux-container{
+  margin-top: 85px;
+  .title{
+     font-size: 22px;
+  }
 .user-redux-body {
-    scroll-margin-top: 100px;
-    /* hoặc dùng padding/margin tùy header */
-    padding-top: 20px;
-.preview-img-container {
-        .label-upload {
-            padding: 5px;
-            border-radius: 3px;
-            background-color: #ddd;
-            cursor: pointer;
-        }
+  scroll-margin-top: 100px;
+  padding-top: 20px;
+   
 
-        &:hover {
-            opacity: 0.9;
-        }
+  // ✅ Style cho các thẻ select để đảm bảo text hiển thị đúng
+  select.form-select,
+  select.form-control {
+    color: #000 !important;               // Chữ màu đen
+    background-color: #fff !important;    // Nền trắng
+    padding-right: 2.5rem !important;     // Tránh chữ bị che bởi mũi tên SVG
+  }
 
-        .preview-image {
-            width: 120px; // ✅ tăng kích thước để nhìn rõ hơn
-            height: 120px;
-            border: 1px solid #ddd;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover; // ✅ dùng 'cover' để ảnh fill hết khung
-            background-color: #f5f5f5; // ✅ để dễ phân biệt nếu ảnh lỗi
-            cursor: pointer;
-        }
+  // ✅ Style cho option bên trong select
+  select option {
+    color: #000 !important;
+    background-color: #fff !important;
+  }
+ option {
+    color: #000 !important;              // màu chữ trong menu dropdown
+    background-color: #fff !important;   // nền trắng dropdown
+  }
+  // ✅ Fix icon mũi tên che mất chữ (nếu cần tắt luôn mũi tên)
+  // select.form-select {
+  //   background-image: none !important;
+  // }
+
+  // ✅ Style khung upload ảnh và preview ảnh
+  .preview-img-container {
+    .label-upload {
+      padding: 5px;
+      border-radius: 3px;
+      background-color: #ddd;
+      cursor: pointer;
     }
-}
 
+    &:hover {
+      opacity: 0.9;
+    }
+
+    .preview-image {
+      width: 120px;
+      height: 120px;
+      border: 1px solid #ddd;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-color: #f5f5f5;
+      cursor: pointer;
+    }
+  }
+}
+}

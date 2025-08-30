@@ -37,6 +37,7 @@
   "medical-facility-title": "Outstanding Medical Facility",
     "search": "Search",
   "outstanding-doctor-title": "Outstanding Doctors of the Week",
+  "outstanding-doctor-detail": "View details",
    "handbook-title":"Handbook",
      "All Articles":"All Articles",
      "video-title":"Media talks "
@@ -54,6 +55,10 @@
   "manage-specialty": "Manage Specialty",
   "handbook": "Handbook",
   "manage-handbook": "Manage Handbook"
+},
+"doctor":{
+  "schedule": "Doctor's Appointment Schedule",
+  "manage-schedule": "Manage Appointment Plans"
 }
 
 
@@ -72,7 +77,70 @@
   "image": "Profile image",
   "save": "Save User",
   "update": "Update User"
-}
+},"manageDoctor": {
+  "title": "ADD MORE DOCTOR INFORMATION",
+  "chooseDoctor": "Select doctor",
+  "intro": "Introduction information:",
+  "choosePrice": "Select price",
+  "choosePayment": "Select payment method",
+  "chooseProvince": "Select province",
+  "clinicName": "Clinic name",
+  "clinicAddress": "Clinic address",
+  "note": "Note",
+  "save": "Save information"
+},
+
+
+ "manage-schedule": {
+    "title": "DOCTOR'S APPOINTMENT SCHEDULE MANAGEMENT",
+    "choose-doctor": "Choose doctor",
+    "select-doctor": "Select doctor",
+    "choose-date": "Choose date",
+    "save-button": "Save information"
+  },
+  "schedule-list": {
+  "title": "Schedule List",
+  "date": "Date",
+  "times": "Time slots",
+  "action": "Action",
+  "empty": "No schedules.",
+  "delete": "Delete"
+},
+"doctor-schedule": {
+  "title": "SCHEDULE",
+  "no-schedule": "No appointments available...",
+  "address": "Address",
+  "clinic-name": "Clinic name",
+  "clinic-address": "Clinic address",
+  "province": "Province",
+  "price": "Price",
+  "payment": "Payment method",
+  "note": "Select a time slot and book (free)",
+   "show-detail": "Show details",
+  "hide-detail": "Hide details"
+},
+ "booking": {
+    "title": "Book an Appointment",
+    "time": "Time",
+    "price": "Examination Fee",
+    "who": "Booking For",
+    "self": "For Myself",
+    "family": "For Family",
+    "name": "Patient's Full Name (required)",
+    "phone": "Phone Number (required)",
+    "gender": "Gender",
+    "male": "Male",
+    "female": "Female",
+    "birth": "Date of Birth (required)",
+    "province": "Select Province/City",
+    "district": "District",
+    "address": "Address",
+    "reason": "Reason for Visit",
+    "paymentOnsite": "Pay at the medical facility",
+    "cancel": "Cancel",
+    "confirm": "Confirm"
+  }
+
 
 
 

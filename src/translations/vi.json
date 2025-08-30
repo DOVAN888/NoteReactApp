@@ -36,6 +36,7 @@
    "medical-facility-title": "Cơ sở y tế nổi bật",
     "search": "Tìm kiếm",
      "outstanding-doctor-title": "Bác sĩ nổi bật tuần qua",
+    "outstanding-doctor-detail": "Xem chi tiết",
      "handbook-title":"Cẩm nang ",
      "All Articles":"Tất cả bài viết",
       "video-title":"Truyền thông "
@@ -55,6 +56,11 @@
   "manage-specialty": "Quản lý chuyên khoa",
   "handbook": "Cẩm nang",
   "manage-handbook": "Quản lý cẩm nang"
+
+},
+"doctor":{
+     "schedule": "Lịch khám bác sĩ",
+  "manage-schedule": "Quản lý kế hoạch khám bệnh"
 }
 
     },
@@ -72,9 +78,73 @@
   "image": "Ảnh đại diện",
   "save": "Lưu users",
   "update": " Cập nhật user"
+},"manageDoctor": {
+  "title": "TẠO THÊM THÔNG TIN DOCTORS",
+  "chooseDoctor": "Chọn bác sĩ",
+  "intro": "Thông tin giới thiệu:",
+  "choosePrice": "Chọn giá",
+  "choosePayment": "Chọn phương thức thanh toán",
+  "chooseProvince": "Chọn tỉnh thành",
+  "clinicName": "Tên phòng khám",
+  "clinicAddress": "Địa chỉ phòng khám",
+  "note": "Ghi chú",
+  "save": "Lưu thông tin"
+},
+
+  "manage-schedule": {
+    "title": "QUẢN LÝ KẾ HOẠCH KHÁM BỆNH CỦA BÁC SĨ",
+    "choose-doctor": "Chọn bác sĩ",
+    "select-doctor": "Chọn bác sĩ",
+    "choose-date": "Chọn ngày",
+    "save-button": "Lưu thông tin"
+  },
+  "schedule-list": {
+  "title": "Danh sách lịch khám",
+  "date": "Ngày khám",
+  "times": "Khung giờ",
+  "action": "Hành động",
+  "empty": "Không có lịch khám nào.",
+  "delete": "Xóa"
+},
+"doctor-schedule": {
+  "title": "LỊCH KHÁM",
+  "no-schedule": "Không có lịch khám...",
+  "address": "Địa chỉ khám",
+  "clinic-name": "Tên phòng khám",
+  "clinic-address": "Địa chỉ phòng khám",
+  "province": "Tỉnh/Thành",
+  "price": "Giá khám",
+  "payment": "Phương thức thanh toán",
+  "note": "Chọn khung giờ và đặt (miễn phí)",
+  "show-detail": "Xem chi tiết",
+  "hide-detail": "Ẩn chi tiết"
+},
+   "booking": {
+    "title": "Đặt lịch khám",
+    "time": "Giờ khám",
+    "price": "Giá khám",
+    "who": "Đặt cho ai",
+    "self": "Đặt cho mình",
+    "family": "Đặt cho người thân",
+    "name": "Họ tên bệnh nhân (bắt buộc)",
+    "phone": "Số điện thoại liên hệ (bắt buộc)",
+    "gender": "Giới tính",
+    "male": "Nam",
+    "female": "Nữ",
+    "birth": "Năm sinh (bắt buộc)",
+    "province": "Chọn Tỉnh/Thành",
+    "district": "Quận huyện",
+    "address": "Địa chỉ",
+    "reason": "Lý do khám",
+    "paymentOnsite": "Thanh toán sau tại cơ sở y tế",
+    "cancel": "Hủy",
+    "confirm": "Xác nhận"
+  }
+
+
+
 }
 
 
-}
 
 

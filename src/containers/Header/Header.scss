@@ -1,13 +1,16 @@
 @import "../../styles/common.scss";
 
 .header-container {
-    z-index: 99;
-    display: flex;
-    justify-content: space-between;
-    background-color: $colormain;
-    color: $common-text-color;
-    height: 40px;
-    position: relative;
+      position: fixed;      // FIX: từ relative → fixed
+            top: 0;
+            left: 0;
+            width: 100%;         // để phủ toàn bộ chiều ngang
+            z-index: 1000;       // cao hơn z-index hiện tại
+            background-color: $colormain;
+            display: flex;
+            justify-content: space-between;
+            color: $common-text-color;
+            height: 40px;
 
     .right-content {
             width: 25%;

@@ -12,6 +12,7 @@ import Home from '../routes/Home'; // Trang Home
 import Login from './Auth/Login'; // Component Login
 import System from '../routes/System'; // Trang hệ thống quản trị
 import DetailDoctor from './Patient/Doctor/DetailDoctor';
+import Doctor from '../routes/Doctor';
 
 import HomePage from './HomePage/HomePage';
 
@@ -50,8 +51,11 @@ class App extends Component {
                             <Switch> {/* Duyệt route và render component tương ứng */}
                                 <Route path={path.HOME} exact component={Home} /> {/* Trang Home */}
                                 <Route path={path.LOGIN} component={userIsNotAuthenticated(Login)} /> {/* Trang Login, chỉ vào nếu chưa login */}
+       
                                 <Route path={path.SYSTEM} component={userIsAuthenticated(System)} /> {/* Trang System, chỉ vào nếu đã login */}
-                                <Route path={path.HOMEPAGE} component={HomePage} /> {/* Route mặc định fallback */}
+                             <Route path={'/doctor'} component={userIsAuthenticated(Doctor)} />
+
+                                    <Route path={path.HOMEPAGE} component={HomePage} /> {/* Route mặc định fallback */}
                                 {/* <Route path="/users/:id" component={DetailDoctor} /> */}
                                     <Route path={path.DETAIL_DOCTOR} component={DetailDoctor} />
 
@@ -60,7 +64,9 @@ class App extends Component {
                         </div>
 
                         <ToastContainer // Hiển thị toast thông báo (thành công, lỗi, v.v.)
-                           className="toast-container"
+                            className="toast-container"
+                            z-index={20000}
+                            position='bottom-right'
                                 toastClassName="toast-item"
                                 bodyClassName="toast-item-body"
                                 autoClose={2000}             // ✅ Tự đóng sau 3 giây

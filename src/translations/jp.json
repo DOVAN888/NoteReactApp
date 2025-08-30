@@ -37,6 +37,7 @@
    "medical-facility-title": "注目の医療施設",
     "search": "検索",
    "outstanding-doctor-title": "今週の注目医師",
+   "outstanding-doctor-detail": "詳細を見る",
      "handbook-title":"ハンドブック",
      "All Articles":"すべての記事",
      "video-title":"メディア "
@@ -54,7 +55,12 @@
   "manage-specialty": "専門科の管理",
   "handbook": "ハンドブック",
   "manage-handbook": "ハンドブックの管理"
+},
+"doctor":{
+   "schedule": "医師のスケジュール",
+  "manage-schedule": "診療計画管理"
 }
+
 
 
 },
@@ -73,7 +79,71 @@
   "save": "追加",
    "update": "更新"
 
-}
+},
+"manageDoctor": {
+  "title": "DOCTOR情報を追加する",
+  "chooseDoctor": "医師を選択",
+  "intro": "紹介情報:",
+  "choosePrice": "料金を選択",
+  "choosePayment": "支払い方法を選択",
+  "chooseProvince": "都道府県を選択",
+  "clinicName": "クリニック名",
+  "clinicAddress": "クリニック住所",
+  "note": "メモ",
+  "save": "保存"
+},
+
+"manage-schedule": {
+    "title": "医師の診療スケジュール管理",
+    "choose-doctor": "医師を選択",
+    "select-doctor": "医師を選択",
+    "choose-date": "日付を選択",
+    "save-button": "情報を保存"
+  },
+  "schedule-list": {
+  "title": "予約スケジュール一覧",
+  "date": "診療日",
+  "times": "時間枠",
+  "action": "操作",
+  "empty": "スケジュールがありません。",
+  "delete": "削除"
+},
+"doctor-schedule": {
+  "title": "診療スケジュール",
+  "no-schedule": "スケジュールがありません...",
+  "address": "住所",
+  "clinic-name": "クリニック名",
+  "clinic-address": "クリニック住所",
+  "province": "都道府県",
+  "price": "診察料金",
+  "payment": "支払い方法",
+  "note": "時間帯を選択して予約（無料）",
+    "show-detail": "詳細を表示",
+  "hide-detail": "詳細を隠す"
+},
+"booking": {
+    "title": "予約登録",
+    "time": "診察時間",
+    "price": "診察料金",
+    "who": "予約対象",
+    "self": "自分のため",
+    "family": "家族のため",
+    "name": "患者氏名（必須）",
+    "phone": "電話番号（必須）",
+    "gender": "性別",
+    "male": "男性",
+    "female": "女性",
+    "birth": "生年月日（必須）",
+    "province": "都道府県を選択",
+    "district": "区・市・町・村",
+    "address": "住所",
+    "reason": "診察理由",
+    "paymentOnsite": "医療機関で支払う",
+    "cancel": "キャンセル",
+    "confirm": "確認する"
+  }
+
+
 
 
 

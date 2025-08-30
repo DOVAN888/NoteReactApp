@@ -91,7 +91,8 @@ class OutStandingDoctor extends Component {
                 className="view-detail-button"
                 onClick={() => this.handleViewDetailDoctor(item)}
               >
-                Xem chi tiết
+                    <FormattedMessage id="homepage.outstanding-doctor-detail" />
+               
               </button>
             </div>
           </div>
